@@ -66,3 +66,8 @@
 ## 许可证
 
 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+
+---
+
+**作者**: bitking
+**GitHub**: https://github.com/smartchainark/ai-web3-blueprint

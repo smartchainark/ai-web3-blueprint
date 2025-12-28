@@ -66,3 +66,8 @@ Contributions welcome! See [CONTRIBUTING.md](./CONTRIBUTING.md).
 ## License
 
 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+
+---
+
+**Author**: bitking
+**GitHub**: https://github.com/smartchainark/ai-web3-blueprint
