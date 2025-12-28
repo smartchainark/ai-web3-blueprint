@@ -6,6 +6,20 @@
 
 ---
 
+## Foreword
+
+Hi, I'm **king**.
+
+In 2025, I've come to realize that **Agent Skills are the future**—AI is no longer just about chatting, but about intelligent agents that can invoke tools, execute tasks, and collaborate on complex workflows.
+
+I'm a **contributor to the x402 protocol** and ranked in the **top 4% globally** on the Cursor leaderboard this year, having developed multiple AI x Web3 projects. This white paper documents the SOPs, techniques, and insights I've gathered from hands-on practice, focusing on the **intersection of AI Agents and Web3**.
+
+I'll keep updating with useful content as I learn more.
+
+> 💡 If you find this helpful, feel free to Star or share with your friends
+
+---
+
 ## Document Index
 
 ### SOPs & Guides
