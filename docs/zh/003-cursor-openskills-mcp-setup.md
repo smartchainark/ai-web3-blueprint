@@ -65,24 +65,28 @@ openskills init
 
 ### 1.4 安装核心技能包
 
-推荐安装以下 5 个核心技能：
+技能来源分为两类：
+
+**1. Anthropic 官方技能**（从官方市场安装）：
 
 ```bash
-# 1. 文档协作技能
-openskills install https://github.com/cyanheads/skill-doc-coauthoring
+# 从 Anthropic 官方仓库安装（交互式选择）
+openskills install anthropics/skills
 
-# 2. 内部沟通技能
-openskills install https://github.com/cyanheads/skill-internal-comms
-
-# 3. Notion 知识捕获技能
-openskills install https://github.com/cyanheads/skill-notion-knowledge-capture
-
-# 4. Notion 研究文档技能
-openskills install https://github.com/cyanheads/skill-notion-research-documentation
-
-# 5. Notion 规范到实施技能（核心）
-openskills install https://github.com/cyanheads/skill-notion-spec-to-implementation
+# 或安装特定技能
+openskills install anthropics/skills/doc-coauthoring
+openskills install anthropics/skills/internal-comms
 ```
+
+**2. Notion 官方技能**（从 Notion 官方页面获取）：
+
+访问 [Notion Skills for Claude](https://www.notion.so/notiondevs/Notion-Skills-for-Claude-28da4445d27180c7af1df7d8615723d0) 获取以下技能：
+
+- notion-knowledge-capture - 知识捕获
+- notion-research-documentation - 研究文档
+- notion-spec-to-implementation - 规范转实施
+
+按照 Notion 官方页面的安装说明操作。
 
 ### 1.5 同步并验证
 
@@ -94,25 +98,19 @@ openskills sync
 openskills list
 ```
 
-**预期输出**：
-```
-Installed Skills:
-  - doc-coauthoring (project)
-  - internal-comms (project)
-  - notion-knowledge-capture (project)
-  - notion-research-documentation (project)
-  - notion-spec-to-implementation (project)
-```
-
 ### 1.6 核心技能说明
 
-| 技能名称 | 用途 | 使用场景 |
-|---------|------|---------|
-| doc-coauthoring | 文档协作 | 编写技术文档、提案、规范 |
-| internal-comms | 内部沟通 | 写进度报告、3P 报告 |
-| notion-knowledge-capture | 知识捕获 | 将对话转为 Notion 文档 |
-| notion-research-documentation | 研究文档 | 搜索 Notion 并生成报告 |
-| notion-spec-to-implementation | 规范转实施 | PRD → 任务清单 |
+| 技能名称 | 来源 | 用途 |
+|---------|------|------|
+| doc-coauthoring | Anthropic 官方 | 编写技术文档、提案、规范 |
+| internal-comms | Anthropic 官方 | 写进度报告、3P 报告 |
+| notion-knowledge-capture | Notion 官方 | 将对话转为 Notion 文档 |
+| notion-research-documentation | Notion 官方 | 搜索 Notion 并生成报告 |
+| notion-spec-to-implementation | Notion 官方 | PRD → 任务清单 |
+
+**技能来源**：
+- Anthropic 官方：[github.com/anthropics/skills](https://github.com/anthropics/skills)
+- Notion 官方：[Notion Skills for Claude](https://www.notion.so/notiondevs/Notion-Skills-for-Claude-28da4445d27180c7af1df7d8615723d0)
 
 ---
 
@@ -383,6 +381,8 @@ git commit -m "Add OpenSkills configuration"
 ## 参考资源
 
 - [OpenSkills GitHub](https://github.com/numman-ali/openskills)
+- [Anthropic 官方技能仓库](https://github.com/anthropics/skills)
+- [Notion Skills for Claude](https://www.notion.so/notiondevs/Notion-Skills-for-Claude-28da4445d27180c7af1df7d8615723d0)
 - [Cursor MCP 文档](https://docs.cursor.com/zh-Hant/tools/mcp)
 - [Notion API 文档](https://developers.notion.com/)
 - [Model Context Protocol 规范](https://modelcontextprotocol.io/)

@@ -65,24 +65,28 @@ openskills init
 
 ### 1.4 Install Core Skill Packages
 
-Recommended 5 core skills to install:
+Skills come from two sources:
+
+**1. Anthropic Official Skills** (install from official marketplace):
 
 ```bash
-# 1. Document coauthoring skill
-openskills install https://github.com/cyanheads/skill-doc-coauthoring
+# Install from Anthropic official repository (interactive selection)
+openskills install anthropics/skills
 
-# 2. Internal communications skill
-openskills install https://github.com/cyanheads/skill-internal-comms
-
-# 3. Notion knowledge capture skill
-openskills install https://github.com/cyanheads/skill-notion-knowledge-capture
-
-# 4. Notion research documentation skill
-openskills install https://github.com/cyanheads/skill-notion-research-documentation
-
-# 5. Notion spec to implementation skill (core)
-openskills install https://github.com/cyanheads/skill-notion-spec-to-implementation
+# Or install specific skills
+openskills install anthropics/skills/doc-coauthoring
+openskills install anthropics/skills/internal-comms
 ```
+
+**2. Notion Official Skills** (get from Notion official page):
+
+Visit [Notion Skills for Claude](https://www.notion.so/notiondevs/Notion-Skills-for-Claude-28da4445d27180c7af1df7d8615723d0) to get these skills:
+
+- notion-knowledge-capture - Knowledge capture
+- notion-research-documentation - Research documentation
+- notion-spec-to-implementation - Spec to implementation
+
+Follow the installation instructions on the Notion official page.
 
 ### 1.5 Sync and Verify
 
@@ -94,25 +98,19 @@ openskills sync
 openskills list
 ```
 
-**Expected Output**:
-```
-Installed Skills:
-  - doc-coauthoring (project)
-  - internal-comms (project)
-  - notion-knowledge-capture (project)
-  - notion-research-documentation (project)
-  - notion-spec-to-implementation (project)
-```
-
 ### 1.6 Core Skills Reference
 
-| Skill Name | Purpose | Use Case |
-|------------|---------|----------|
-| doc-coauthoring | Document collaboration | Write technical docs, proposals, specs |
-| internal-comms | Internal communication | Progress reports, 3P reports |
-| notion-knowledge-capture | Knowledge capture | Convert conversations to Notion docs |
-| notion-research-documentation | Research documentation | Search Notion and generate reports |
-| notion-spec-to-implementation | Spec to implementation | PRD → Task list |
+| Skill Name | Source | Purpose |
+|------------|--------|---------|
+| doc-coauthoring | Anthropic Official | Write technical docs, proposals, specs |
+| internal-comms | Anthropic Official | Progress reports, 3P reports |
+| notion-knowledge-capture | Notion Official | Convert conversations to Notion docs |
+| notion-research-documentation | Notion Official | Search Notion and generate reports |
+| notion-spec-to-implementation | Notion Official | PRD → Task list |
+
+**Skill Sources**:
+- Anthropic Official: [github.com/anthropics/skills](https://github.com/anthropics/skills)
+- Notion Official: [Notion Skills for Claude](https://www.notion.so/notiondevs/Notion-Skills-for-Claude-28da4445d27180c7af1df7d8615723d0)
 
 ---
 
@@ -383,6 +381,8 @@ git commit -m "Add OpenSkills configuration"
 ## References
 
 - [OpenSkills GitHub](https://github.com/numman-ali/openskills)
+- [Anthropic Official Skills Repository](https://github.com/anthropics/skills)
+- [Notion Skills for Claude](https://www.notion.so/notiondevs/Notion-Skills-for-Claude-28da4445d27180c7af1df7d8615723d0)
 - [Cursor MCP Documentation](https://docs.cursor.com/zh-Hant/tools/mcp)
 - [Notion API Documentation](https://developers.notion.com/)
 - [Model Context Protocol Specification](https://modelcontextprotocol.io/)
