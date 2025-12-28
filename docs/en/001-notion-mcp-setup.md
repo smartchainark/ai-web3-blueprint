@@ -182,129 +182,72 @@ Enable Claude Code users to query NotebookLM notebooks directly, reducing contex
 
 ## Part 3: PRD to Notion Tasks
 
-### 3.1 API Setup
+### 3.1 Using the notion-spec-to-implementation Skill
+
+This is the simplest approach. In Claude Code, invoke the skill:
+
+```
+/notion-spec-to-implementation
+```
+
+Then tell Claude:
+- The PRD file path (e.g., `./drafts/notebooklm-prd.md`)
+- Or provide the PRD content directly in the conversation
+
+### 3.2 What the Skill Does Automatically
+
+The skill automatically:
+
+1. **Parses PRD Document** - Extracts features, priorities, and module breakdown
+2. **Creates Project Page** - Sets up a project homepage in Notion
+3. **Creates Task Database** - With fields for task name, status, priority, module, etc.
+4. **Batch Creates Tasks** - Breaks down PRD requirements into actionable tasks
+
+### 3.3 Example Conversation
+
+```
+User: /notion-spec-to-implementation
+
+Claude: Please provide the PRD file path or content.
+
+User: The PRD is at ./drafts/notebooklm-prd.md
+
+Claude: I've read the PRD. Creating the following tasks:
+- Auth Module: 3 tasks (P0: 2, P1: 1)
+- Library Module: 3 tasks (P0: 2, P1: 1)
+- Query Module: 2 tasks (P0: 2)
+
+Creating Notion project page...
+✅ Project page created
+✅ Task database created
+✅ 8 tasks added
+
+Project link: https://notion.so/xxx
+```
+
+### 3.4 Manual API Calls (Optional)
+
+For more granular control, you can call the Notion API directly:
 
 ```bash
 # Set environment variables
 TOKEN="your_notion_token"
 PARENT_PAGE="parent_page_id"
-```
 
-### 3.2 Create Project Page
-
-```bash
-PROJECT_RESPONSE=$(curl -s -X POST "https://api.notion.com/v1/pages" \
+# Create project page
+curl -s -X POST "https://api.notion.com/v1/pages" \
   -H "Authorization: Bearer $TOKEN" \
   -H "Notion-Version: 2022-06-28" \
   -H "Content-Type: application/json" \
-  -d "{
-    \"parent\": {\"page_id\": \"$PARENT_PAGE\"},
-    \"properties\": {
-      \"title\": {\"title\": [{\"text\": {\"content\": \"Project Name\"}}]}
-    },
-    \"children\": [
-      {
-        \"object\": \"block\",
-        \"type\": \"heading_2\",
-        \"heading_2\": {\"rich_text\": [{\"type\": \"text\", \"text\": {\"content\": \"Project Overview\"}}]}
-      },
-      {
-        \"object\": \"block\",
-        \"type\": \"paragraph\",
-        \"paragraph\": {\"rich_text\": [{\"type\": \"text\", \"text\": {\"content\": \"Project description...\"}}]}
-      }
-    ]
-  }")
-
-PROJECT_ID=$(echo $PROJECT_RESPONSE | jq -r '.id')
-echo "Project page: $PROJECT_ID"
-```
-
-### 3.3 Create Task Database
-
-```bash
-DB_RESPONSE=$(curl -s -X POST "https://api.notion.com/v1/databases" \
-  -H "Authorization: Bearer $TOKEN" \
-  -H "Notion-Version: 2022-06-28" \
-  -H "Content-Type: application/json" \
-  -d "{
-    \"parent\": {\"page_id\": \"$PROJECT_ID\"},
-    \"title\": [{\"type\": \"text\", \"text\": {\"content\": \"Task List\"}}],
-    \"properties\": {
-      \"Task Name\": {\"title\": {}},
-      \"Status\": {
-        \"select\": {
-          \"options\": [
-            {\"name\": \"Not Started\", \"color\": \"gray\"},
-            {\"name\": \"In Progress\", \"color\": \"blue\"},
-            {\"name\": \"Completed\", \"color\": \"green\"}
-          ]
-        }
-      },
-      \"Priority\": {
-        \"select\": {
-          \"options\": [
-            {\"name\": \"P0\", \"color\": \"red\"},
-            {\"name\": \"P1\", \"color\": \"yellow\"},
-            {\"name\": \"P2\", \"color\": \"gray\"}
-          ]
-        }
-      },
-      \"Module\": {
-        \"select\": {
-          \"options\": [
-            {\"name\": \"Auth\", \"color\": \"purple\"},
-            {\"name\": \"Library\", \"color\": \"blue\"},
-            {\"name\": \"Query\", \"color\": \"green\"}
-          ]
-        }
-      }
+  -d '{
+    "parent": {"page_id": "'$PARENT_PAGE'"},
+    "properties": {
+      "title": {"title": [{"text": {"content": "Project Name"}}]}
     }
-  }")
-
-DATABASE_ID=$(echo $DB_RESPONSE | jq -r '.id')
-echo "Database: $DATABASE_ID"
+  }'
 ```
 
-### 3.4 Batch Create Tasks
-
-```bash
-create_task() {
-  local name="$1"
-  local priority="$2"
-  local module="$3"
-
-  curl -s -X POST "https://api.notion.com/v1/pages" \
-    -H "Authorization: Bearer $TOKEN" \
-    -H "Notion-Version: 2022-06-28" \
-    -H "Content-Type: application/json" \
-    -d "{
-      \"parent\": {\"database_id\": \"$DATABASE_ID\"},
-      \"properties\": {
-        \"Task Name\": {\"title\": [{\"text\": {\"content\": \"$name\"}}]},
-        \"Status\": {\"select\": {\"name\": \"Not Started\"}},
-        \"Priority\": {\"select\": {\"name\": \"$priority\"}},
-        \"Module\": {\"select\": {\"name\": \"$module\"}}
-      }
-    }" > /dev/null
-}
-
-# Auth Module
-create_task "Implement Google Login" "P0" "Auth"
-create_task "Auth Status Check" "P0" "Auth"
-create_task "Token Expiry Handling" "P1" "Auth"
-
-# Library Module
-create_task "Add Notebook via URL" "P0" "Library"
-create_task "List All Notebooks" "P0" "Library"
-create_task "Set Default Notebook" "P1" "Library"
-
-# Query Module
-create_task "Basic Question Query" "P0" "Query"
-create_task "Specify Notebook Query" "P0" "Query"
-
-echo "Tasks created!"
-```
+For detailed API usage, see the [Notion API Documentation](https://developers.notion.com/docs)
 
 ---
 
@@ -352,71 +295,45 @@ Telegram supports Markdown formatting:
 
 ---
 
-## Part 5: Complete Automation Script
+## Part 5: Complete Workflow Example
 
-Combine all steps into one complete script:
+### 5.1 Full Flow in Claude Code
+
+```
+# Step 1: Write PRD
+User: /doc-coauthoring Write a PRD for NotebookLM Integration Assistant
+
+Claude: [Guides user through PRD writing, saves to ./drafts/notebooklm-prd.md]
+
+# Step 2: Convert to Notion Tasks
+User: /notion-spec-to-implementation
+
+Claude: Please provide the PRD path.
+
+User: ./drafts/notebooklm-prd.md
+
+Claude: ✅ Created project page and 12 tasks
+Project link: https://notion.so/xxx
+
+# Step 3: Send Telegram Notification
+User: Send the task summary to Telegram
+
+Claude: [Sends notification to Telegram]
+✅ Message sent
+```
+
+### 5.2 Telegram Notification Script (Optional)
+
+If you need a standalone notification script:
 
 ```bash
 #!/bin/bash
 
-# === Configuration ===
-NOTION_TOKEN="ntn_xxx"
-PARENT_PAGE="parent_page_id"
-BOT_TOKEN="bot_token"
-CHAT_ID="chat_id"
+BOT_TOKEN="your_bot_token"
+CHAT_ID="your_chat_id"
+PROJECT_URL="https://notion.so/xxx"
+TASK_COUNT=12
 
-# === Step 1: Create Project Page ===
-echo "Creating project page..."
-PROJECT_RESPONSE=$(curl -s -X POST "https://api.notion.com/v1/pages" \
-  -H "Authorization: Bearer $NOTION_TOKEN" \
-  -H "Notion-Version: 2022-06-28" \
-  -H "Content-Type: application/json" \
-  -d "{
-    \"parent\": {\"page_id\": \"$PARENT_PAGE\"},
-    \"properties\": {
-      \"title\": {\"title\": [{\"text\": {\"content\": \"NotebookLM Integration Assistant\"}}]}
-    }
-  }")
-PROJECT_ID=$(echo $PROJECT_RESPONSE | jq -r '.id')
-
-# === Step 2: Create Task Database ===
-echo "Creating task database..."
-DB_RESPONSE=$(curl -s -X POST "https://api.notion.com/v1/databases" \
-  -H "Authorization: Bearer $NOTION_TOKEN" \
-  -H "Notion-Version: 2022-06-28" \
-  -H "Content-Type: application/json" \
-  -d "{
-    \"parent\": {\"page_id\": \"$PROJECT_ID\"},
-    \"title\": [{\"type\": \"text\", \"text\": {\"content\": \"Task List\"}}],
-    \"properties\": {
-      \"Task\": {\"title\": {}},
-      \"Status\": {\"select\": {\"options\": [{\"name\": \"Not Started\", \"color\": \"gray\"}]}},
-      \"Priority\": {\"select\": {\"options\": [{\"name\": \"P0\", \"color\": \"red\"}, {\"name\": \"P1\", \"color\": \"yellow\"}]}}
-    }
-  }")
-DATABASE_ID=$(echo $DB_RESPONSE | jq -r '.id')
-
-# === Step 3: Create Tasks ===
-echo "Creating tasks..."
-TASK_COUNT=0
-for task in "Google Login Auth" "Auth Status Check" "Add Notebook" "List Notebooks" "Query Notebook"; do
-  curl -s -X POST "https://api.notion.com/v1/pages" \
-    -H "Authorization: Bearer $NOTION_TOKEN" \
-    -H "Notion-Version: 2022-06-28" \
-    -H "Content-Type: application/json" \
-    -d "{
-      \"parent\": {\"database_id\": \"$DATABASE_ID\"},
-      \"properties\": {
-        \"Task\": {\"title\": [{\"text\": {\"content\": \"$task\"}}]},
-        \"Status\": {\"select\": {\"name\": \"Not Started\"}}
-      }
-    }" > /dev/null
-  ((TASK_COUNT++))
-done
-
-# === Step 4: Send Telegram Notification ===
-echo "Sending notification..."
-PROJECT_URL="https://notion.so/${PROJECT_ID//-/}"
 MESSAGE="📋 *Project Tasks Created*
 
 📁 Project: NotebookLM Integration Assistant
@@ -431,10 +348,16 @@ curl -s -X POST "https://api.telegram.org/bot$BOT_TOKEN/sendMessage" \
     \"chat_id\": \"$CHAT_ID\",
     \"text\": \"$MESSAGE\",
     \"parse_mode\": \"Markdown\"
-  }" > /dev/null
-
-echo "Done! Project page: $PROJECT_URL"
+  }"
 ```
+
+### 5.3 Workflow Summary
+
+| Step | Skill/Tool | Output |
+|------|------------|--------|
+| 1. PRD Writing | `/doc-coauthoring` | Markdown PRD file |
+| 2. Task Creation | `/notion-spec-to-implementation` | Notion project page + task database |
+| 3. Team Notification | Telegram Bot API | Message push |
 
 ---
 
