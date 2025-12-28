@@ -14,6 +14,7 @@
 |---|------|------|----------|------|
 | 001 | [需求到任务到通知](./docs/zh/001-notion-mcp-setup.md) | 完整工作流：PRD → Notion 任务 → Telegram 通知 | [PPTX](./exports/001-workflow-sop.pptx) / [PDF](./exports/001-workflow-sop.pdf) / [DOCX](./exports/001-workflow-sop.docx) | 2025-12-28 |
 | 002 | [内部沟通到多格式导出](./docs/zh/002-internal-comms-to-exports.md) | 完整工作流：3P 更新 → PPTX/PDF/DOCX → Telegram 通知 | [PPTX](./exports/002-internal-comms-export.pptx) / [PDF](./exports/002-internal-comms-export.pdf) / [DOCX](./exports/002-internal-comms-export.docx) | 2025-12-28 |
+| 003 | [Cursor IDE 技能系统与 MCP 配置](./docs/zh/003-cursor-openskills-mcp-setup.md) | 在 Cursor IDE 中安装 OpenSkills 并配置 Notion MCP | - | 2025-12-29 |
 
 > **注意**: 当前是 2025 年，新文档请使用 2025 年日期。
 
