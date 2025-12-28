@@ -10,13 +10,21 @@
 
 ## Overview
 
-This document demonstrates a complete project management workflow:
+This document demonstrates a complete project management workflow, automated through Claude Code skill combinations:
+
+| Step | Skill | Description |
+|------|-------|-------------|
+| 1. PRD Writing | `/doc-coauthoring` | Guided document collaboration, generates structured PRD |
+| 2. Task Creation | `/notion-spec-to-implementation` | Parses PRD, auto-creates Notion project and tasks |
+| 3. Team Notification | Telegram Bot API | Pushes task summary to team channel |
 
 ```
-PRD Writing → Notion Task Creation → Telegram Notification
+/doc-coauthoring → /notion-spec-to-implementation → Telegram Notification
 ```
 
-Through Claude Code's skill combinations, we automate the entire process from requirement analysis to team notifications.
+**Prerequisites**:
+- Notion MCP server configured (see Part 1)
+- Telegram Bot created (see Part 1)
 
 ---
 

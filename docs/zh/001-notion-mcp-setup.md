@@ -10,13 +10,21 @@
 
 ## 概述
 
-本文档演示一个完整的项目管理工作流：
+本文档演示一个完整的项目管理工作流，通过 Claude Code 技能组合实现自动化闭环：
+
+| 步骤 | 技能 | 说明 |
+|------|------|------|
+| 1. PRD 撰写 | `/doc-coauthoring` | 引导式文档协作，生成结构化 PRD |
+| 2. 任务创建 | `/notion-spec-to-implementation` | 解析 PRD，自动创建 Notion 项目和任务 |
+| 3. 团队通知 | Telegram Bot API | 推送任务摘要到团队群组 |
 
 ```
-PRD 撰写 → Notion 任务创建 → Telegram 通知
+/doc-coauthoring → /notion-spec-to-implementation → Telegram 通知
 ```
 
-通过 Claude Code 的技能组合，实现从需求分析到团队通知的自动化闭环。
+**前置条件**：
+- 已配置 Notion MCP 服务器（见第一部分）
+- 已创建 Telegram Bot（见第一部分）
 
 ---
 
