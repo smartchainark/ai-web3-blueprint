@@ -12,8 +12,10 @@
 
 | # | 标题 | 描述 | 日期 |
 |---|------|------|------|
-| 001 | [Notion MCP 配置指南](./docs/zh/001-notion-mcp-setup.md) | 在 Claude Code 中配置 Notion MCP 并将 PRD 转化为任务 | 2024-12-28 |
-| 002 | [构建你的第一个 Agent](./docs/zh/002-building-first-agent.md) | AI Agent 快速入门，实现工具调用 | 2024-12-28 |
+| 001 | [Notion MCP 配置指南](./docs/zh/001-notion-mcp-setup.md) | 在 Claude Code 中配置 Notion MCP 并将 PRD 转化为任务 | 2025-12-28 |
+| 002 | [构建你的第一个 Agent](./docs/zh/002-building-first-agent.md) | AI Agent 快速入门，实现工具调用 | 2025-12-28 |
+
+> **注意**: 当前是 2025 年，新文档请使用 2025 年日期。
 
 ### 思考 & 随笔
 
