@@ -1,14 +1,30 @@
-# Claude Code 配置 Notion MCP 及 PRD 转任务 SOP
+# 需求到任务到通知：完整工作流 SOP
 
-## 概述
+> 从 PRD 撰写到 Notion 任务管理再到 Telegram 通知的完整闭环
 
-本文档介绍如何在 Claude Code 中配置 Notion MCP 服务器，并将本地 PRD 文档自动转化为 Notion 项目页面和任务数据库。
+**文档编号**: 001
+**日期**: 2025-12-28
+**标签**: `Claude Code` `Notion` `Telegram` `工作流`
 
 ---
 
-## 第一部分：配置 Notion MCP 服务器
+## 概述
 
-### 1.1 获取 Notion API Token
+本文档演示一个完整的项目管理工作流：
+
+```
+PRD 撰写 → Notion 任务创建 → Telegram 通知
+```
+
+通过 Claude Code 的技能组合，实现从需求分析到团队通知的自动化闭环。
+
+---
+
+## 第一部分：配置环境
+
+### 1.1 配置 Notion MCP 服务器
+
+#### 获取 Notion API Token
 
 1. 访问 [Notion Integrations](https://www.notion.so/profile/integrations)
 2. 点击「新建集成」(New integration)
@@ -16,21 +32,17 @@
 4. 选择关联的工作区
 5. 点击「提交」后复制生成的 Token（以 `ntn_` 或 `secret_` 开头）
 
-### 1.2 在 Claude Code 中添加 MCP 服务器
-
-**方式一：项目级配置（仅当前项目可用）**
+#### 添加 MCP 服务器
 
 ```bash
+# 项目级配置（仅当前项目可用）
 claude mcp add notion -e NOTION_TOKEN=你的token -- npx -y @notionhq/notion-mcp-server
-```
 
-**方式二：用户级配置（所有项目可用）**
-
-```bash
+# 或：用户级配置（所有项目可用）
 claude mcp add notion -s user -e NOTION_TOKEN=你的token -- npx -y @notionhq/notion-mcp-server
 ```
 
-### 1.3 验证连接
+#### 验证连接
 
 ```bash
 claude mcp list
@@ -41,7 +53,7 @@ claude mcp list
 notion: npx -y @notionhq/notion-mcp-server - ✓ Connected
 ```
 
-### 1.4 授权页面访问
+#### 授权页面访问
 
 **重要**：Notion API 只能访问已授权的页面。
 
@@ -50,126 +62,216 @@ notion: npx -y @notionhq/notion-mcp-server - ✓ Connected
 3. 选择「连接」(Connections)
 4. 找到并选择你创建的集成
 
+### 1.2 配置 Telegram Bot
+
+#### 创建 Bot
+
+1. 在 Telegram 中搜索 `@BotFather`
+2. 发送 `/newbot` 并按提示操作
+3. 保存获取的 Bot Token
+
+#### 获取 Chat ID
+
+```bash
+BOT_TOKEN="你的Bot Token"
+
+# 如果有活跃的 webhook，先删除
+curl -s "https://api.telegram.org/bot$BOT_TOKEN/deleteWebhook"
+
+# 向你的 Bot 发送一条消息，然后获取 chat_id
+curl -s "https://api.telegram.org/bot$BOT_TOKEN/getUpdates" | jq '.result[0].message.chat.id'
+```
+
 ---
 
-## 第二部分：PRD 转 Notion 任务
+## 第二部分：撰写 PRD 文档
 
-### 2.1 准备工作
+### 2.1 使用 doc-coauthoring 技能
 
-确保：
-- Notion MCP 已配置并连接
-- 目标页面已授权给集成
-- PRD 文档已准备好（Markdown 格式）
+在 Claude Code 中输入：
 
-### 2.2 API 调用模式
+```
+/doc-coauthoring 写一份 [项目名称] 的 PRD 文档
+```
 
-由于 MCP 工具需要在新会话中生效，可以使用 curl 直接调用 Notion API：
+### 2.2 PRD 结构建议
+
+一个简洁的 MVP PRD 应包含：
+
+```markdown
+# 项目名称 PRD
+
+## 1. 产品背景
+- 痛点描述
+- 为什么需要这个产品
+
+## 2. 产品目标
+- 核心价值
+- 解决什么问题
+
+## 3. 目标用户
+- 用户画像
+
+## 4. 功能需求
+| 功能 | 描述 | 优先级 |
+|------|------|--------|
+| 功能A | 说明 | P0 |
+| 功能B | 说明 | P1 |
+
+## 5. 非功能需求
+- 性能要求
+- 安全要求
+
+## 6. MVP 范围
+- 包含什么
+- 不包含什么
+
+## 7. 成功指标
+- 如何衡量成功
+```
+
+### 2.3 示例：NotebookLM 集成助手 PRD
+
+```markdown
+# NotebookLM 集成助手 PRD
+
+> 通过 Claude Code 查询 Google NotebookLM 笔记本
+
+**版本**: MVP v1.0
+
+## 1. 产品背景
+
+NotebookLM 是 Google 推出的 AI 笔记本工具，能基于用户上传的文档提供精准回答。
+但目前只能通过网页访问，无法与开发工具集成。
+
+## 2. 产品目标
+
+让 Claude Code 用户能直接查询 NotebookLM 笔记本，减少上下文切换。
+
+## 3. 功能需求
+
+### 认证管理
+| 功能 | 描述 | 优先级 |
+|------|------|--------|
+| 初始认证 | 浏览器弹窗登录 Google 账号 | P0 |
+| 认证状态检查 | 查看当前认证状态 | P0 |
+| 重新认证 | Token 过期后重新登录 | P1 |
+
+### 笔记本库管理
+| 功能 | 描述 | 优先级 |
+|------|------|--------|
+| 添加笔记本 | 通过 URL 添加到本地库 | P0 |
+| 列出笔记本 | 查看已添加的笔记本 | P0 |
+| 设置默认笔记本 | 激活常用笔记本 | P1 |
+
+### 查询功能
+| 功能 | 描述 | 优先级 |
+|------|------|--------|
+| 提问查询 | 向笔记本提问，获取 AI 回答 | P0 |
+| 指定笔记本查询 | 查询特定笔记本 | P0 |
+
+## 4. 技术方案
+
+- 浏览器自动化: Patchright
+- 运行环境: Python venv
+- 数据存储: JSON 本地存储
+```
+
+---
+
+## 第三部分：PRD 转 Notion 任务
+
+### 3.1 API 调用准备
 
 ```bash
 # 设置环境变量
 TOKEN="你的Notion Token"
+PARENT_PAGE="父页面ID"
 ```
 
-### 2.3 搜索已授权页面
+### 3.2 创建项目页面
 
 ```bash
-curl -s -X POST "https://api.notion.com/v1/search" \
+PROJECT_RESPONSE=$(curl -s -X POST "https://api.notion.com/v1/pages" \
   -H "Authorization: Bearer $TOKEN" \
   -H "Notion-Version: 2022-06-28" \
   -H "Content-Type: application/json" \
-  -d '{"page_size": 10}'
-```
-
-### 2.4 创建项目页面
-
-```bash
-curl -s -X POST "https://api.notion.com/v1/pages" \
-  -H "Authorization: Bearer $TOKEN" \
-  -H "Notion-Version: 2022-06-28" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "parent": {"page_id": "父页面ID"},
-    "properties": {
-      "title": {"title": [{"text": {"content": "项目名称"}}]}
+  -d "{
+    \"parent\": {\"page_id\": \"$PARENT_PAGE\"},
+    \"properties\": {
+      \"title\": {\"title\": [{\"text\": {\"content\": \"项目名称\"}}]}
     },
-    "children": [
+    \"children\": [
       {
-        "object": "block",
-        "type": "heading_1",
-        "heading_1": {"rich_text": [{"type": "text", "text": {"content": "项目概览"}}]}
+        \"object\": \"block\",
+        \"type\": \"heading_2\",
+        \"heading_2\": {\"rich_text\": [{\"type\": \"text\", \"text\": {\"content\": \"项目概览\"}}]}
       },
       {
-        "object": "block",
-        "type": "paragraph",
-        "paragraph": {"rich_text": [{"type": "text", "text": {"content": "项目描述..."}}]}
+        \"object\": \"block\",
+        \"type\": \"paragraph\",
+        \"paragraph\": {\"rich_text\": [{\"type\": \"text\", \"text\": {\"content\": \"项目描述...\"}}]}
       }
     ]
-  }'
+  }")
+
+PROJECT_ID=$(echo $PROJECT_RESPONSE | jq -r '.id')
+echo "项目页面: $PROJECT_ID"
 ```
 
-### 2.5 创建任务数据库
+### 3.3 创建任务数据库
 
 ```bash
-curl -s -X POST "https://api.notion.com/v1/databases" \
+DB_RESPONSE=$(curl -s -X POST "https://api.notion.com/v1/databases" \
   -H "Authorization: Bearer $TOKEN" \
   -H "Notion-Version: 2022-06-28" \
   -H "Content-Type: application/json" \
-  -d '{
-    "parent": {"page_id": "项目页面ID"},
-    "title": [{"type": "text", "text": {"content": "任务列表"}}],
-    "properties": {
-      "任务名称": {"title": {}},
-      "状态": {
-        "select": {
-          "options": [
-            {"name": "待开始", "color": "gray"},
-            {"name": "进行中", "color": "blue"},
-            {"name": "已完成", "color": "green"},
-            {"name": "阻塞", "color": "red"}
+  -d "{
+    \"parent\": {\"page_id\": \"$PROJECT_ID\"},
+    \"title\": [{\"type\": \"text\", \"text\": {\"content\": \"任务列表\"}}],
+    \"properties\": {
+      \"任务名称\": {\"title\": {}},
+      \"状态\": {
+        \"select\": {
+          \"options\": [
+            {\"name\": \"待开始\", \"color\": \"gray\"},
+            {\"name\": \"进行中\", \"color\": \"blue\"},
+            {\"name\": \"已完成\", \"color\": \"green\"}
           ]
         }
       },
-      "优先级": {
-        "select": {
-          "options": [
-            {"name": "P0-紧急", "color": "red"},
-            {"name": "P1-重要", "color": "yellow"},
-            {"name": "P2-一般", "color": "gray"}
+      \"优先级\": {
+        \"select\": {
+          \"options\": [
+            {\"name\": \"P0\", \"color\": \"red\"},
+            {\"name\": \"P1\", \"color\": \"yellow\"},
+            {\"name\": \"P2\", \"color\": \"gray\"}
           ]
         }
       },
-      "阶段": {
-        "select": {
-          "options": [
-            {"name": "Phase 1", "color": "purple"},
-            {"name": "Phase 2", "color": "blue"},
-            {"name": "Phase 3", "color": "green"}
-          ]
-        }
-      },
-      "模块": {
-        "select": {
-          "options": [
-            {"name": "模块A", "color": "orange"},
-            {"name": "模块B", "color": "yellow"}
+      \"模块\": {
+        \"select\": {
+          \"options\": [
+            {\"name\": \"认证\", \"color\": \"purple\"},
+            {\"name\": \"笔记本库\", \"color\": \"blue\"},
+            {\"name\": \"查询\", \"color\": \"green\"}
           ]
         }
       }
     }
-  }'
+  }")
+
+DATABASE_ID=$(echo $DB_RESPONSE | jq -r '.id')
+echo "数据库: $DATABASE_ID"
 ```
 
-### 2.6 批量创建任务
+### 3.4 批量创建任务
 
 ```bash
-DATABASE_ID="数据库ID"
-
 create_task() {
   local name="$1"
-  local task_status="$2"
-  local priority="$3"
-  local phase="$4"
-  local module="$5"
+  local priority="$2"
+  local module="$3"
 
   curl -s -X POST "https://api.notion.com/v1/pages" \
     -H "Authorization: Bearer $TOKEN" \
@@ -179,88 +281,190 @@ create_task() {
       \"parent\": {\"database_id\": \"$DATABASE_ID\"},
       \"properties\": {
         \"任务名称\": {\"title\": [{\"text\": {\"content\": \"$name\"}}]},
-        \"状态\": {\"select\": {\"name\": \"$task_status\"}},
+        \"状态\": {\"select\": {\"name\": \"待开始\"}},
         \"优先级\": {\"select\": {\"name\": \"$priority\"}},
-        \"阶段\": {\"select\": {\"name\": \"$phase\"}},
         \"模块\": {\"select\": {\"name\": \"$module\"}}
       }
-    }"
+    }" > /dev/null
 }
 
-# 示例调用
-create_task "任务名称" "待开始" "P1-重要" "Phase 1" "模块A"
-```
+# 认证模块
+create_task "实现 Google 登录认证" "P0" "认证"
+create_task "认证状态检查" "P0" "认证"
+create_task "Token 过期处理" "P1" "认证"
 
-### 2.7 追加内容到页面
+# 笔记本库模块
+create_task "通过 URL 添加笔记本" "P0" "笔记本库"
+create_task "列出所有笔记本" "P0" "笔记本库"
+create_task "设置默认笔记本" "P1" "笔记本库"
 
-```bash
-curl -s -X PATCH "https://api.notion.com/v1/blocks/页面ID/children" \
-  -H "Authorization: Bearer $TOKEN" \
-  -H "Notion-Version: 2022-06-28" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "children": [
-      {"object": "block", "type": "heading_2", "heading_2": {"rich_text": [{"type": "text", "text": {"content": "新章节"}}]}},
-      {"object": "block", "type": "to_do", "to_do": {"rich_text": [{"type": "text", "text": {"content": "待办事项"}}], "checked": false}}
-    ]
-  }'
+# 查询模块
+create_task "基础提问查询" "P0" "查询"
+create_task "指定笔记本查询" "P0" "查询"
+
+echo "任务创建完成!"
 ```
 
 ---
 
-## 第三部分：PRD 拆解最佳实践
+## 第四部分：Telegram 通知
 
-### 3.1 任务拆解原则
+### 4.1 发送任务摘要
 
-1. **按功能模块拆分**：每个模块独立成组
-2. **按开发阶段划分**：设计 → 开发 → 测试 → 发布
-3. **优先级分级**：
-   - P0：核心功能，阻塞上线
-   - P1：重要功能，计划内
-   - P2：优化项，有空再做
+```bash
+BOT_TOKEN="你的Bot Token"
+CHAT_ID="你的Chat ID"
 
-### 3.2 典型 PRD 结构映射
+# 构建消息
+MESSAGE="📋 *项目任务已创建*
 
-| PRD 章节 | Notion 对应 |
-|---------|-------------|
-| 项目背景 | 项目页面概览 |
-| 产品目标 | 成功指标列表 |
-| 功能需求 | 任务数据库条目 |
-| 非功能需求 | 任务验收标准 |
-| 里程碑 | 阶段划分 |
+📁 项目: NotebookLM 集成助手
+🔗 [查看 Notion 页面](https://notion.so/$PROJECT_ID)
 
-### 3.3 任务粒度建议
+✅ 已创建任务:
+• 认证模块: 3 个任务
+• 笔记本库模块: 3 个任务
+• 查询模块: 2 个任务
 
-- 每个任务预估工作量：1-3 天
-- 任务描述包含：做什么、验收标准、依赖项
-- 避免过大任务，及时拆分
+📊 总计: 8 个任务"
+
+# 发送消息
+curl -s -X POST "https://api.telegram.org/bot$BOT_TOKEN/sendMessage" \
+  -H "Content-Type: application/json" \
+  -d "{
+    \"chat_id\": \"$CHAT_ID\",
+    \"text\": \"$MESSAGE\",
+    \"parse_mode\": \"Markdown\"
+  }"
+```
+
+### 4.2 消息格式说明
+
+Telegram 支持 Markdown 格式：
+
+| 格式 | 语法 | 效果 |
+|------|------|------|
+| 粗体 | `*文字*` | **文字** |
+| 斜体 | `_文字_` | *文字* |
+| 代码 | `` `代码` `` | `代码` |
+| 链接 | `[文字](URL)` | 超链接 |
+
+---
+
+## 第五部分：完整自动化脚本
+
+将以上步骤整合为一个完整脚本：
+
+```bash
+#!/bin/bash
+
+# === 配置 ===
+NOTION_TOKEN="ntn_xxx"
+PARENT_PAGE="父页面ID"
+BOT_TOKEN="Bot Token"
+CHAT_ID="Chat ID"
+
+# === 步骤 1: 创建项目页面 ===
+echo "创建项目页面..."
+PROJECT_RESPONSE=$(curl -s -X POST "https://api.notion.com/v1/pages" \
+  -H "Authorization: Bearer $NOTION_TOKEN" \
+  -H "Notion-Version: 2022-06-28" \
+  -H "Content-Type: application/json" \
+  -d "{
+    \"parent\": {\"page_id\": \"$PARENT_PAGE\"},
+    \"properties\": {
+      \"title\": {\"title\": [{\"text\": {\"content\": \"NotebookLM 集成助手\"}}]}
+    }
+  }")
+PROJECT_ID=$(echo $PROJECT_RESPONSE | jq -r '.id')
+
+# === 步骤 2: 创建任务数据库 ===
+echo "创建任务数据库..."
+DB_RESPONSE=$(curl -s -X POST "https://api.notion.com/v1/databases" \
+  -H "Authorization: Bearer $NOTION_TOKEN" \
+  -H "Notion-Version: 2022-06-28" \
+  -H "Content-Type: application/json" \
+  -d "{
+    \"parent\": {\"page_id\": \"$PROJECT_ID\"},
+    \"title\": [{\"type\": \"text\", \"text\": {\"content\": \"任务列表\"}}],
+    \"properties\": {
+      \"任务\": {\"title\": {}},
+      \"状态\": {\"select\": {\"options\": [{\"name\": \"待开始\", \"color\": \"gray\"}]}},
+      \"优先级\": {\"select\": {\"options\": [{\"name\": \"P0\", \"color\": \"red\"}, {\"name\": \"P1\", \"color\": \"yellow\"}]}}
+    }
+  }")
+DATABASE_ID=$(echo $DB_RESPONSE | jq -r '.id')
+
+# === 步骤 3: 创建任务 ===
+echo "创建任务..."
+TASK_COUNT=0
+for task in "Google 登录认证" "认证状态检查" "添加笔记本" "列出笔记本" "提问查询"; do
+  curl -s -X POST "https://api.notion.com/v1/pages" \
+    -H "Authorization: Bearer $NOTION_TOKEN" \
+    -H "Notion-Version: 2022-06-28" \
+    -H "Content-Type: application/json" \
+    -d "{
+      \"parent\": {\"database_id\": \"$DATABASE_ID\"},
+      \"properties\": {
+        \"任务\": {\"title\": [{\"text\": {\"content\": \"$task\"}}]},
+        \"状态\": {\"select\": {\"name\": \"待开始\"}}
+      }
+    }" > /dev/null
+  ((TASK_COUNT++))
+done
+
+# === 步骤 4: 发送 Telegram 通知 ===
+echo "发送通知..."
+PROJECT_URL="https://notion.so/${PROJECT_ID//-/}"
+MESSAGE="📋 *项目任务已创建*
+
+📁 项目: NotebookLM 集成助手
+🔗 [查看 Notion](${PROJECT_URL})
+📊 任务数: ${TASK_COUNT}
+
+✅ 工作流完成!"
+
+curl -s -X POST "https://api.telegram.org/bot$BOT_TOKEN/sendMessage" \
+  -H "Content-Type: application/json" \
+  -d "{
+    \"chat_id\": \"$CHAT_ID\",
+    \"text\": \"$MESSAGE\",
+    \"parse_mode\": \"Markdown\"
+  }" > /dev/null
+
+echo "完成! 项目页面: $PROJECT_URL"
+```
 
 ---
 
 ## 常见问题
 
-### Q1: 提示 "Could not find page with ID"
+### Q1: Notion 提示 "Could not find page with ID"
 
 **原因**：页面未授权给集成
 
 **解决**：在 Notion 中打开页面 → `···` → 连接 → 选择你的集成
 
-### Q2: MCP 工具不可用
+### Q2: Telegram getUpdates 返回空
+
+**原因**：有活跃的 webhook 或没有新消息
+
+**解决**：
+1. 先调用 `deleteWebhook` 删除 webhook
+2. 向 Bot 发送一条消息
+3. 再调用 `getUpdates`
+
+### Q3: MCP 工具不可用
 
 **原因**：MCP 工具在添加后需要新会话才能生效
 
 **解决**：退出当前 Claude Code 会话，重新启动
-
-### Q3: API 调用返回 401
-
-**原因**：Token 无效或过期
-
-**解决**：重新获取 Token 并更新配置
 
 ---
 
 ## 参考资源
 
 - [Notion API 文档](https://developers.notion.com/docs)
+- [Telegram Bot API](https://core.telegram.org/bots/api)
 - [Notion MCP Server](https://github.com/makenotion/notion-mcp-server)
-- [Claude Code MCP 指南](https://docs.anthropic.com/claude-code/mcp)
+- [Claude Code 文档](https://docs.anthropic.com/claude-code)

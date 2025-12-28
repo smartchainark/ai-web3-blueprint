@@ -1,14 +1,30 @@
-# Claude Code Notion MCP Setup & PRD to Tasks SOP
+# PRD to Tasks to Notification: Complete Workflow SOP
 
-## Overview
+> From PRD writing to Notion task management to Telegram notification - a complete closed loop
 
-This document describes how to configure the Notion MCP server in Claude Code and automatically convert local PRD documents into Notion project pages and task databases.
+**Document**: 001
+**Date**: 2025-12-28
+**Tags**: `Claude Code` `Notion` `Telegram` `Workflow`
 
 ---
 
-## Part 1: Configure Notion MCP Server
+## Overview
 
-### 1.1 Obtain Notion API Token
+This document demonstrates a complete project management workflow:
+
+```
+PRD Writing → Notion Task Creation → Telegram Notification
+```
+
+Through Claude Code's skill combinations, we automate the entire process from requirement analysis to team notifications.
+
+---
+
+## Part 1: Environment Setup
+
+### 1.1 Configure Notion MCP Server
+
+#### Obtain Notion API Token
 
 1. Visit [Notion Integrations](https://www.notion.so/profile/integrations)
 2. Click "New integration"
@@ -16,21 +32,17 @@ This document describes how to configure the Notion MCP server in Claude Code an
 4. Select the associated workspace
 5. Click "Submit" and copy the generated Token (starts with `ntn_` or `secret_`)
 
-### 1.2 Add MCP Server in Claude Code
-
-**Option 1: Project-level configuration (current project only)**
+#### Add MCP Server
 
 ```bash
+# Project-level configuration (current project only)
 claude mcp add notion -e NOTION_TOKEN=your_token -- npx -y @notionhq/notion-mcp-server
-```
 
-**Option 2: User-level configuration (all projects)**
-
-```bash
+# Or: User-level configuration (all projects)
 claude mcp add notion -s user -e NOTION_TOKEN=your_token -- npx -y @notionhq/notion-mcp-server
 ```
 
-### 1.3 Verify Connection
+#### Verify Connection
 
 ```bash
 claude mcp list
@@ -41,7 +53,7 @@ Expected output:
 notion: npx -y @notionhq/notion-mcp-server - ✓ Connected
 ```
 
-### 1.4 Authorize Page Access
+#### Authorize Page Access
 
 **Important**: Notion API can only access authorized pages.
 
@@ -50,126 +62,217 @@ notion: npx -y @notionhq/notion-mcp-server - ✓ Connected
 3. Select "Connections"
 4. Find and select your integration
 
+### 1.2 Configure Telegram Bot
+
+#### Create Bot
+
+1. Search for `@BotFather` in Telegram
+2. Send `/newbot` and follow the prompts
+3. Save the Bot Token you receive
+
+#### Get Chat ID
+
+```bash
+BOT_TOKEN="your_bot_token"
+
+# If there's an active webhook, delete it first
+curl -s "https://api.telegram.org/bot$BOT_TOKEN/deleteWebhook"
+
+# Send a message to your Bot, then get the chat_id
+curl -s "https://api.telegram.org/bot$BOT_TOKEN/getUpdates" | jq '.result[0].message.chat.id'
+```
+
 ---
 
-## Part 2: PRD to Notion Tasks
+## Part 2: Write PRD Document
 
-### 2.1 Prerequisites
+### 2.1 Using doc-coauthoring Skill
 
-Ensure:
-- Notion MCP is configured and connected
-- Target pages are authorized for the integration
-- PRD document is ready (Markdown format)
+In Claude Code, type:
 
-### 2.2 API Call Pattern
+```
+/doc-coauthoring Write a PRD for [Project Name]
+```
 
-Since MCP tools require a new session to take effect, you can call the Notion API directly using curl:
+### 2.2 Recommended PRD Structure
+
+A concise MVP PRD should include:
+
+```markdown
+# Project Name PRD
+
+## 1. Background
+- Pain points
+- Why this product is needed
+
+## 2. Product Goals
+- Core value proposition
+- What problem it solves
+
+## 3. Target Users
+- User personas
+
+## 4. Functional Requirements
+| Feature | Description | Priority |
+|---------|-------------|----------|
+| Feature A | Description | P0 |
+| Feature B | Description | P1 |
+
+## 5. Non-functional Requirements
+- Performance requirements
+- Security requirements
+
+## 6. MVP Scope
+- What's included
+- What's not included
+
+## 7. Success Metrics
+- How to measure success
+```
+
+### 2.3 Example: NotebookLM Integration Assistant PRD
+
+```markdown
+# NotebookLM Integration Assistant PRD
+
+> Query Google NotebookLM notebooks via Claude Code
+
+**Version**: MVP v1.0
+
+## 1. Background
+
+NotebookLM is Google's AI notebook tool that provides accurate answers based on
+user-uploaded documents. However, it can only be accessed via web browser and
+cannot integrate with development tools.
+
+## 2. Product Goals
+
+Enable Claude Code users to query NotebookLM notebooks directly, reducing context switching.
+
+## 3. Functional Requirements
+
+### Authentication
+| Feature | Description | Priority |
+|---------|-------------|----------|
+| Initial Auth | Browser popup Google login | P0 |
+| Auth Status Check | View current auth state | P0 |
+| Re-authentication | Re-login after token expires | P1 |
+
+### Notebook Library
+| Feature | Description | Priority |
+|---------|-------------|----------|
+| Add Notebook | Add via URL | P0 |
+| List Notebooks | View all added notebooks | P0 |
+| Set Default | Activate frequently used notebook | P1 |
+
+### Query
+| Feature | Description | Priority |
+|---------|-------------|----------|
+| Ask Question | Query notebook, get AI answer | P0 |
+| Specify Notebook | Query specific notebook | P0 |
+
+## 4. Technical Approach
+
+- Browser Automation: Patchright
+- Runtime: Python venv
+- Data Storage: Local JSON
+```
+
+---
+
+## Part 3: PRD to Notion Tasks
+
+### 3.1 API Setup
 
 ```bash
-# Set environment variable
+# Set environment variables
 TOKEN="your_notion_token"
+PARENT_PAGE="parent_page_id"
 ```
 
-### 2.3 Search Authorized Pages
+### 3.2 Create Project Page
 
 ```bash
-curl -s -X POST "https://api.notion.com/v1/search" \
+PROJECT_RESPONSE=$(curl -s -X POST "https://api.notion.com/v1/pages" \
   -H "Authorization: Bearer $TOKEN" \
   -H "Notion-Version: 2022-06-28" \
   -H "Content-Type: application/json" \
-  -d '{"page_size": 10}'
-```
-
-### 2.4 Create Project Page
-
-```bash
-curl -s -X POST "https://api.notion.com/v1/pages" \
-  -H "Authorization: Bearer $TOKEN" \
-  -H "Notion-Version: 2022-06-28" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "parent": {"page_id": "parent_page_id"},
-    "properties": {
-      "title": {"title": [{"text": {"content": "Project Name"}}]}
+  -d "{
+    \"parent\": {\"page_id\": \"$PARENT_PAGE\"},
+    \"properties\": {
+      \"title\": {\"title\": [{\"text\": {\"content\": \"Project Name\"}}]}
     },
-    "children": [
+    \"children\": [
       {
-        "object": "block",
-        "type": "heading_1",
-        "heading_1": {"rich_text": [{"type": "text", "text": {"content": "Project Overview"}}]}
+        \"object\": \"block\",
+        \"type\": \"heading_2\",
+        \"heading_2\": {\"rich_text\": [{\"type\": \"text\", \"text\": {\"content\": \"Project Overview\"}}]}
       },
       {
-        "object": "block",
-        "type": "paragraph",
-        "paragraph": {"rich_text": [{"type": "text", "text": {"content": "Project description..."}}]}
+        \"object\": \"block\",
+        \"type\": \"paragraph\",
+        \"paragraph\": {\"rich_text\": [{\"type\": \"text\", \"text\": {\"content\": \"Project description...\"}}]}
       }
     ]
-  }'
+  }")
+
+PROJECT_ID=$(echo $PROJECT_RESPONSE | jq -r '.id')
+echo "Project page: $PROJECT_ID"
 ```
 
-### 2.5 Create Task Database
+### 3.3 Create Task Database
 
 ```bash
-curl -s -X POST "https://api.notion.com/v1/databases" \
+DB_RESPONSE=$(curl -s -X POST "https://api.notion.com/v1/databases" \
   -H "Authorization: Bearer $TOKEN" \
   -H "Notion-Version: 2022-06-28" \
   -H "Content-Type: application/json" \
-  -d '{
-    "parent": {"page_id": "project_page_id"},
-    "title": [{"type": "text", "text": {"content": "Task List"}}],
-    "properties": {
-      "Task Name": {"title": {}},
-      "Status": {
-        "select": {
-          "options": [
-            {"name": "Not Started", "color": "gray"},
-            {"name": "In Progress", "color": "blue"},
-            {"name": "Completed", "color": "green"},
-            {"name": "Blocked", "color": "red"}
+  -d "{
+    \"parent\": {\"page_id\": \"$PROJECT_ID\"},
+    \"title\": [{\"type\": \"text\", \"text\": {\"content\": \"Task List\"}}],
+    \"properties\": {
+      \"Task Name\": {\"title\": {}},
+      \"Status\": {
+        \"select\": {
+          \"options\": [
+            {\"name\": \"Not Started\", \"color\": \"gray\"},
+            {\"name\": \"In Progress\", \"color\": \"blue\"},
+            {\"name\": \"Completed\", \"color\": \"green\"}
           ]
         }
       },
-      "Priority": {
-        "select": {
-          "options": [
-            {"name": "P0-Critical", "color": "red"},
-            {"name": "P1-Important", "color": "yellow"},
-            {"name": "P2-Normal", "color": "gray"}
+      \"Priority\": {
+        \"select\": {
+          \"options\": [
+            {\"name\": \"P0\", \"color\": \"red\"},
+            {\"name\": \"P1\", \"color\": \"yellow\"},
+            {\"name\": \"P2\", \"color\": \"gray\"}
           ]
         }
       },
-      "Phase": {
-        "select": {
-          "options": [
-            {"name": "Phase 1: Design", "color": "purple"},
-            {"name": "Phase 2: Development", "color": "blue"},
-            {"name": "Phase 3: Release", "color": "green"}
-          ]
-        }
-      },
-      "Module": {
-        "select": {
-          "options": [
-            {"name": "Module A", "color": "orange"},
-            {"name": "Module B", "color": "yellow"}
+      \"Module\": {
+        \"select\": {
+          \"options\": [
+            {\"name\": \"Auth\", \"color\": \"purple\"},
+            {\"name\": \"Library\", \"color\": \"blue\"},
+            {\"name\": \"Query\", \"color\": \"green\"}
           ]
         }
       }
     }
-  }'
+  }")
+
+DATABASE_ID=$(echo $DB_RESPONSE | jq -r '.id')
+echo "Database: $DATABASE_ID"
 ```
 
-### 2.6 Batch Create Tasks
+### 3.4 Batch Create Tasks
 
 ```bash
-DATABASE_ID="database_id"
-
 create_task() {
   local name="$1"
-  local task_status="$2"
-  local priority="$3"
-  local phase="$4"
-  local module="$5"
+  local priority="$2"
+  local module="$3"
 
   curl -s -X POST "https://api.notion.com/v1/pages" \
     -H "Authorization: Bearer $TOKEN" \
@@ -179,189 +282,190 @@ create_task() {
       \"parent\": {\"database_id\": \"$DATABASE_ID\"},
       \"properties\": {
         \"Task Name\": {\"title\": [{\"text\": {\"content\": \"$name\"}}]},
-        \"Status\": {\"select\": {\"name\": \"$task_status\"}},
+        \"Status\": {\"select\": {\"name\": \"Not Started\"}},
         \"Priority\": {\"select\": {\"name\": \"$priority\"}},
-        \"Phase\": {\"select\": {\"name\": \"$phase\"}},
         \"Module\": {\"select\": {\"name\": \"$module\"}}
       }
-    }"
+    }" > /dev/null
 }
 
-# Example usage
-create_task "Task Name" "Not Started" "P1-Important" "Phase 1: Design" "Module A"
+# Auth Module
+create_task "Implement Google Login" "P0" "Auth"
+create_task "Auth Status Check" "P0" "Auth"
+create_task "Token Expiry Handling" "P1" "Auth"
+
+# Library Module
+create_task "Add Notebook via URL" "P0" "Library"
+create_task "List All Notebooks" "P0" "Library"
+create_task "Set Default Notebook" "P1" "Library"
+
+# Query Module
+create_task "Basic Question Query" "P0" "Query"
+create_task "Specify Notebook Query" "P0" "Query"
+
+echo "Tasks created!"
 ```
 
-### 2.7 Append Content to Page
+---
+
+## Part 4: Telegram Notification
+
+### 4.1 Send Task Summary
 
 ```bash
-curl -s -X PATCH "https://api.notion.com/v1/blocks/page_id/children" \
-  -H "Authorization: Bearer $TOKEN" \
-  -H "Notion-Version: 2022-06-28" \
+BOT_TOKEN="your_bot_token"
+CHAT_ID="your_chat_id"
+
+# Build message
+MESSAGE="📋 *Project Tasks Created*
+
+📁 Project: NotebookLM Integration Assistant
+🔗 [View Notion Page](https://notion.so/$PROJECT_ID)
+
+✅ Tasks Created:
+• Auth Module: 3 tasks
+• Library Module: 3 tasks
+• Query Module: 2 tasks
+
+📊 Total: 8 tasks"
+
+# Send message
+curl -s -X POST "https://api.telegram.org/bot$BOT_TOKEN/sendMessage" \
   -H "Content-Type: application/json" \
-  -d '{
-    "children": [
-      {"object": "block", "type": "heading_2", "heading_2": {"rich_text": [{"type": "text", "text": {"content": "New Section"}}]}},
-      {"object": "block", "type": "to_do", "to_do": {"rich_text": [{"type": "text", "text": {"content": "Todo item"}}], "checked": false}}
-    ]
-  }'
+  -d "{
+    \"chat_id\": \"$CHAT_ID\",
+    \"text\": \"$MESSAGE\",
+    \"parse_mode\": \"Markdown\"
+  }"
 ```
 
----
+### 4.2 Message Formatting
 
-## Part 3: PRD Breakdown Best Practices
+Telegram supports Markdown formatting:
 
-### 3.1 Task Breakdown Principles
-
-1. **Split by functional modules**: Each module as a separate group
-2. **Divide by development phases**: Design → Development → Testing → Release
-3. **Priority levels**:
-   - P0: Core features, blocking release
-   - P1: Important features, planned
-   - P2: Optimizations, nice-to-have
-
-### 3.2 Typical PRD Structure Mapping
-
-| PRD Section | Notion Equivalent |
-|-------------|-------------------|
-| Project Background | Project page overview |
-| Product Goals | Success metrics list |
-| Functional Requirements | Task database entries |
-| Non-functional Requirements | Task acceptance criteria |
-| Milestones | Phase divisions |
-
-### 3.3 Task Granularity Guidelines
-
-- Estimated effort per task: 1-3 days
-- Task description includes: What to do, acceptance criteria, dependencies
-- Avoid oversized tasks, split when necessary
+| Format | Syntax | Result |
+|--------|--------|--------|
+| Bold | `*text*` | **text** |
+| Italic | `_text_` | *text* |
+| Code | `` `code` `` | `code` |
+| Link | `[text](URL)` | hyperlink |
 
 ---
 
-## Troubleshooting
+## Part 5: Complete Automation Script
 
-### Q1: "Could not find page with ID" error
-
-**Cause**: Page not authorized for the integration
-
-**Solution**: Open the page in Notion → `···` → Connections → Select your integration
-
-### Q2: MCP tools unavailable
-
-**Cause**: MCP tools require a new session after being added
-
-**Solution**: Exit current Claude Code session and restart
-
-### Q3: API returns 401
-
-**Cause**: Invalid or expired token
-
-**Solution**: Obtain a new token and update configuration
-
----
-
-## Supported Block Types
-
-When creating page content, these block types are available:
-
-| Block Type | Description |
-|------------|-------------|
-| `paragraph` | Regular text paragraph |
-| `heading_1` | H1 heading |
-| `heading_2` | H2 heading |
-| `heading_3` | H3 heading |
-| `bulleted_list_item` | Bullet point |
-| `numbered_list_item` | Numbered item |
-| `to_do` | Checkbox item |
-| `toggle` | Collapsible section |
-| `code` | Code block |
-| `quote` | Block quote |
-| `divider` | Horizontal line |
-| `callout` | Callout box |
-
----
-
-## Database Property Types
-
-When creating databases, these property types are available:
-
-| Property Type | Use Case |
-|---------------|----------|
-| `title` | Primary name field (required) |
-| `select` | Single choice dropdown |
-| `multi_select` | Multiple choice tags |
-| `status` | Status with groups |
-| `date` | Date/datetime picker |
-| `people` | User assignment |
-| `checkbox` | Boolean toggle |
-| `url` | Link field |
-| `email` | Email address |
-| `phone_number` | Phone number |
-| `number` | Numeric value |
-| `rich_text` | Text content |
-| `relation` | Link to another database |
-
----
-
-## Complete Workflow Example
+Combine all steps into one complete script:
 
 ```bash
 #!/bin/bash
 
-TOKEN="ntn_xxx"
-PARENT_PAGE="parent-page-id"
+# === Configuration ===
+NOTION_TOKEN="ntn_xxx"
+PARENT_PAGE="parent_page_id"
+BOT_TOKEN="bot_token"
+CHAT_ID="chat_id"
 
-# Step 1: Create project page
+# === Step 1: Create Project Page ===
+echo "Creating project page..."
 PROJECT_RESPONSE=$(curl -s -X POST "https://api.notion.com/v1/pages" \
-  -H "Authorization: Bearer $TOKEN" \
+  -H "Authorization: Bearer $NOTION_TOKEN" \
   -H "Notion-Version: 2022-06-28" \
   -H "Content-Type: application/json" \
   -d "{
     \"parent\": {\"page_id\": \"$PARENT_PAGE\"},
     \"properties\": {
-      \"title\": {\"title\": [{\"text\": {\"content\": \"My Project\"}}]}
+      \"title\": {\"title\": [{\"text\": {\"content\": \"NotebookLM Integration Assistant\"}}]}
     }
   }")
-
 PROJECT_ID=$(echo $PROJECT_RESPONSE | jq -r '.id')
-echo "Created project page: $PROJECT_ID"
 
-# Step 2: Create task database
+# === Step 2: Create Task Database ===
+echo "Creating task database..."
 DB_RESPONSE=$(curl -s -X POST "https://api.notion.com/v1/databases" \
-  -H "Authorization: Bearer $TOKEN" \
+  -H "Authorization: Bearer $NOTION_TOKEN" \
   -H "Notion-Version: 2022-06-28" \
   -H "Content-Type: application/json" \
   -d "{
     \"parent\": {\"page_id\": \"$PROJECT_ID\"},
-    \"title\": [{\"type\": \"text\", \"text\": {\"content\": \"Tasks\"}}],
+    \"title\": [{\"type\": \"text\", \"text\": {\"content\": \"Task List\"}}],
     \"properties\": {
-      \"Name\": {\"title\": {}},
-      \"Status\": {\"select\": {\"options\": [{\"name\": \"Todo\", \"color\": \"gray\"}]}}
+      \"Task\": {\"title\": {}},
+      \"Status\": {\"select\": {\"options\": [{\"name\": \"Not Started\", \"color\": \"gray\"}]}},
+      \"Priority\": {\"select\": {\"options\": [{\"name\": \"P0\", \"color\": \"red\"}, {\"name\": \"P1\", \"color\": \"yellow\"}]}}
     }
   }")
+DATABASE_ID=$(echo $DB_RESPONSE | jq -r '.id')
 
-DB_ID=$(echo $DB_RESPONSE | jq -r '.id')
-echo "Created database: $DB_ID"
+# === Step 3: Create Tasks ===
+echo "Creating tasks..."
+TASK_COUNT=0
+for task in "Google Login Auth" "Auth Status Check" "Add Notebook" "List Notebooks" "Query Notebook"; do
+  curl -s -X POST "https://api.notion.com/v1/pages" \
+    -H "Authorization: Bearer $NOTION_TOKEN" \
+    -H "Notion-Version: 2022-06-28" \
+    -H "Content-Type: application/json" \
+    -d "{
+      \"parent\": {\"database_id\": \"$DATABASE_ID\"},
+      \"properties\": {
+        \"Task\": {\"title\": [{\"text\": {\"content\": \"$task\"}}]},
+        \"Status\": {\"select\": {\"name\": \"Not Started\"}}
+      }
+    }" > /dev/null
+  ((TASK_COUNT++))
+done
 
-# Step 3: Add tasks
-curl -s -X POST "https://api.notion.com/v1/pages" \
-  -H "Authorization: Bearer $TOKEN" \
-  -H "Notion-Version: 2022-06-28" \
+# === Step 4: Send Telegram Notification ===
+echo "Sending notification..."
+PROJECT_URL="https://notion.so/${PROJECT_ID//-/}"
+MESSAGE="📋 *Project Tasks Created*
+
+📁 Project: NotebookLM Integration Assistant
+🔗 [View Notion](${PROJECT_URL})
+📊 Tasks: ${TASK_COUNT}
+
+✅ Workflow Complete!"
+
+curl -s -X POST "https://api.telegram.org/bot$BOT_TOKEN/sendMessage" \
   -H "Content-Type: application/json" \
   -d "{
-    \"parent\": {\"database_id\": \"$DB_ID\"},
-    \"properties\": {
-      \"Name\": {\"title\": [{\"text\": {\"content\": \"First Task\"}}]},
-      \"Status\": {\"select\": {\"name\": \"Todo\"}}
-    }
-  }"
+    \"chat_id\": \"$CHAT_ID\",
+    \"text\": \"$MESSAGE\",
+    \"parse_mode\": \"Markdown\"
+  }" > /dev/null
 
-echo "Workflow complete!"
+echo "Done! Project page: $PROJECT_URL"
 ```
+
+---
+
+## Troubleshooting
+
+### Q1: Notion shows "Could not find page with ID"
+
+**Cause**: Page not authorized for the integration
+
+**Solution**: Open the page in Notion → `···` → Connections → Select your integration
+
+### Q2: Telegram getUpdates returns empty
+
+**Cause**: Active webhook or no new messages
+
+**Solution**:
+1. Call `deleteWebhook` first
+2. Send a message to your Bot
+3. Then call `getUpdates`
+
+### Q3: MCP tools not available
+
+**Cause**: MCP tools require a new session after being added
+
+**Solution**: Exit the current Claude Code session and restart
 
 ---
 
 ## References
 
 - [Notion API Documentation](https://developers.notion.com/docs)
+- [Telegram Bot API](https://core.telegram.org/bots/api)
 - [Notion MCP Server](https://github.com/makenotion/notion-mcp-server)
-- [Claude Code MCP Guide](https://docs.anthropic.com/claude-code/mcp)
+- [Claude Code Documentation](https://docs.anthropic.com/claude-code)
