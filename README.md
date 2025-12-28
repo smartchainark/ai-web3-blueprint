@@ -1,6 +1,9 @@
 # AI x Web3 Programming White Paper
 
 [![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+![GitHub stars](https://img.shields.io/github/stars/smartchainark/ai-web3-blueprint?style=social)
+![GitHub forks](https://img.shields.io/github/forks/smartchainark/ai-web3-blueprint?style=social)
+![GitHub last commit](https://img.shields.io/github/last-commit/smartchainark/ai-web3-blueprint)
 
 > A collection of SOPs, guides, and insights at the intersection of AI and Web3.
 
@@ -57,6 +60,12 @@ This white paper documents the SOPs, techniques, and insights we've gathered fro
 
 - [All Documents (EN)](./docs/en/)
 - [All Thoughts (EN)](./thoughts/en/)
+
+---
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=smartchainark/ai-web3-blueprint&type=Date)](https://star-history.com/#smartchainark/ai-web3-blueprint&Date)
 
 ---
 

@@ -1,6 +1,9 @@
 # AI x Web3 编程白皮书
 
 [![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+![GitHub stars](https://img.shields.io/github/stars/smartchainark/ai-web3-blueprint?style=social)
+![GitHub forks](https://img.shields.io/github/forks/smartchainark/ai-web3-blueprint?style=social)
+![GitHub last commit](https://img.shields.io/github/last-commit/smartchainark/ai-web3-blueprint)
 
 > AI 与 Web3 交叉领域的 SOP、指南与洞察合集。
 
@@ -57,6 +60,12 @@
 
 - [所有文档 (中文)](./docs/zh/)
 - [所有思考 (中文)](./thoughts/zh/)
+
+---
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=smartchainark/ai-web3-blueprint&type=Date)](https://star-history.com/#smartchainark/ai-web3-blueprint&Date)
 
 ---
 
