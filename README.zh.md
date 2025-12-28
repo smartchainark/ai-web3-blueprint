@@ -10,10 +10,10 @@
 
 ### SOP & 指南
 
-| # | 标题 | 描述 | 日期 |
-|---|------|------|------|
-| 001 | [需求到任务到通知](./docs/zh/001-notion-mcp-setup.md) | 完整工作流：PRD → Notion 任务 → Telegram 通知 | 2025-12-28 |
-| 002 | [构建你的第一个 Agent](./docs/zh/002-building-first-agent.md) | AI Agent 快速入门，实现工具调用 | 2025-12-28 |
+| # | 标题 | 描述 | 导出文件 | 日期 |
+|---|------|------|----------|------|
+| 001 | [需求到任务到通知](./docs/zh/001-notion-mcp-setup.md) | 完整工作流：PRD → Notion 任务 → Telegram 通知 | [PPTX](./exports/001-workflow-sop.pptx) / [PDF](./exports/001-workflow-sop.pdf) / [DOCX](./exports/001-workflow-sop.docx) | 2025-12-28 |
+| 002 | [内部沟通到多格式导出](./docs/zh/002-internal-comms-to-exports.md) | 完整工作流：3P 更新 → PPTX/PDF/DOCX → Telegram 通知 | [PPTX](./exports/002-internal-comms-export.pptx) / [PDF](./exports/002-internal-comms-export.pdf) / [DOCX](./exports/002-internal-comms-export.docx) | 2025-12-28 |
 
 > **注意**: 当前是 2025 年，新文档请使用 2025 年日期。
 

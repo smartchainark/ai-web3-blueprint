@@ -315,6 +315,16 @@ pdfmetrics.registerFont(TTFont('PingFang', '/System/Library/Fonts/PingFang.ttc')
 
 ---
 
+## 导出文件
+
+本文档提供以下格式下载：
+
+- [PowerPoint 演示文稿 (PPTX)](../../exports/002-internal-comms-export.pptx)
+- [PDF 文档](../../exports/002-internal-comms-export.pdf)
+- [Word 文档 (DOCX)](../../exports/002-internal-comms-export.docx)
+
+---
+
 ## 参考资源
 
 - [reportlab 文档](https://docs.reportlab.com/)

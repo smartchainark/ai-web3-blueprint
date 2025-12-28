@@ -393,6 +393,16 @@ curl -s -X POST "https://api.telegram.org/bot$BOT_TOKEN/sendMessage" \
 
 ---
 
+## 导出文件
+
+本文档提供以下格式下载：
+
+- [PowerPoint 演示文稿 (PPTX)](../../exports/001-workflow-sop.pptx)
+- [PDF 文档](../../exports/001-workflow-sop.pdf)
+- [Word 文档 (DOCX)](../../exports/001-workflow-sop.docx)
+
+---
+
 ## 参考资源
 
 - [Notion API 文档](https://developers.notion.com/docs)

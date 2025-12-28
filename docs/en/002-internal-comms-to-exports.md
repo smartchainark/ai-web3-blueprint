@@ -318,6 +318,16 @@ The two workflows form a complete project management cycle:
 
 ---
 
+## Export Files
+
+This document is available in the following formats:
+
+- [PowerPoint Presentation (PPTX)](../../exports/002-internal-comms-export.pptx)
+- [PDF Document](../../exports/002-internal-comms-export.pdf)
+- [Word Document (DOCX)](../../exports/002-internal-comms-export.docx)
+
+---
+
 ## References
 
 - [reportlab Documentation](https://docs.reportlab.com/)

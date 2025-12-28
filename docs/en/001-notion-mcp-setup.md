@@ -394,6 +394,16 @@ curl -s -X POST "https://api.telegram.org/bot$BOT_TOKEN/sendMessage" \
 
 ---
 
+## Export Files
+
+This document is available in the following formats:
+
+- [PowerPoint Presentation (PPTX)](../../exports/001-workflow-sop.pptx)
+- [PDF Document](../../exports/001-workflow-sop.pdf)
+- [Word Document (DOCX)](../../exports/001-workflow-sop.docx)
+
+---
+
 ## References
 
 - [Notion API Documentation](https://developers.notion.com/docs)
