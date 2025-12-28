@@ -1,0 +1,45 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Node (if using any tools)
+node_modules/
+package-lock.json
+yarn.lock
+
+# Python (if using any tools)
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Build outputs
+dist/
+build/
+_site/
+.cache/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Temporary files
+*.tmp
+*.temp
+.temp/
+.tmp/
+
+# Draft files (optional - remove if you want to track drafts)
+# drafts/
