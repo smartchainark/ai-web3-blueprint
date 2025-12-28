@@ -1,10 +1,10 @@
-# Building Your First AI Agent in 30 Minutes
+# Building Your First AI Agent
 
 > A quick-start guide to creating a functional AI agent with tool use.
 
+**Document**: 002
 **Date**: 2024-12-28
 **Tags**: `agent` `tutorial` `beginner`
-**Reading Time**: 10 min
 
 ---
 
@@ -133,14 +133,12 @@ print(result)
 - Implement memory for context persistence
 - Add error handling and retries
 
-## Conclusion
+## Summary
 
 You've built a basic AI agent! While simple, this pattern scales to complex applications.
 
 ---
 
-**Related Posts**:
-- [Understanding Agent Architectures](./2024-12-29-agent-architectures.md)
-- [Tool Design Best Practices](./2024-12-30-tool-design.md)
-
-**Book Reference**: [Agent Development Guide - Chapter 4](../books/agent-development-guide/en/04-tool-use.md)
+**References**:
+- [OpenAI Function Calling](https://platform.openai.com/docs/guides/function-calling)
+- [Anthropic Tool Use](https://docs.anthropic.com/claude/docs/tool-use)

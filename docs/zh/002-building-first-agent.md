@@ -1,10 +1,10 @@
-# 30 分钟构建你的第一个 AI Agent
+# 构建你的第一个 AI Agent
 
-> 快速上手创建具有工具使用能力的 AI Agent。
+> AI Agent 快速入门，实现工具调用。
 
+**文档编号**: 002
 **日期**: 2024-12-28
 **标签**: `agent` `教程` `入门`
-**阅读时间**: 10 分钟
 
 ---
 
@@ -139,8 +139,6 @@ print(result)
 
 ---
 
-**相关文章**:
-- [理解 Agent 架构](./2024-12-29-Agent架构.md)
-- [工具设计最佳实践](./2024-12-30-工具设计.md)
-
-**书籍参考**: [Agent 开发指南 - 第四章](../../books/agent-development-guide/zh/04-工具使用.md)
+**参考资料**:
+- [OpenAI Function Calling](https://platform.openai.com/docs/guides/function-calling)
+- [Anthropic Tool Use](https://docs.anthropic.com/claude/docs/tool-use)
