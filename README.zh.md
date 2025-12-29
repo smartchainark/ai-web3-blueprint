@@ -45,6 +45,7 @@
 | 007 | [微信文章到 Notion 自动实践](./zh/sops/007-wechat-to-notion-auto-practice.md) | AI 自动模拟作者操作，沉淀知识库并学以致用 | 2025-12-29 |
 | 008 | [GitBook + GitHub 文档工作流](./zh/sops/008-gitbook-github-documentation.md) | GitBook 结构 + GitHub 托管的双语文档管理 | 2025-12-29 |
 | 011 | [技能强制激活 Hook](./zh/sops/011-skill-force-activation-hook.md) | 将技能激活率从 20% 提升到 84% | 2025-12-29 |
+| 012 | [GTD + PARA 双系统](./zh/sops/012-gtd-para-notion-skill.md) | AI 驱动的任务管理 + Notion MCP 自动化 | 2025-12-29 |
 
 ### 本地 AI CLI 系列
 
