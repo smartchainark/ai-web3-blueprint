@@ -1,15 +1,29 @@
 # Summary
 
-* [Introduction](README.md)
+* [Overview](README.md)
 
 ## SOPs & Guides
 
-* [PRD to Tasks to Notification](sops/001-notion-mcp-setup.md)
-* [Internal Comms to Multi-Format Export](sops/002-internal-comms-to-exports.md)
-* [Cursor IDE Skills & MCP Setup](sops/003-cursor-openskills-mcp-setup.md)
-* [Claude Skills Cross-Platform Setup](sops/004-claude-skills-setup.md)
-* [Gemini CLI Multimodal Integration](sops/005-gemini-cli-multimodal-integration.md)
-* [Claude Skill Creation SOP](sops/006-claude-skill-creation-sop.md)
+* [PRD to Tasks](sops/001-notion-mcp-setup.md)
+* [Internal Comms Export](sops/002-internal-comms-to-exports.md)
+* [Cursor IDE Setup](sops/003-cursor-openskills-mcp-setup.md)
+* [Claude Skills Setup](sops/004-claude-skills-setup.md)
+* [Skill Creation SOP](sops/006-claude-skill-creation-sop.md)
+* [WeChat to Notion Auto-Practice](sops/007-wechat-to-notion-auto-practice.md)
+* [GitBook + GitHub Workflow](sops/008-gitbook-github-documentation.md)
+* [Skill Force Activation Hook](sops/011-skill-force-activation-hook.md)
+* [GTD + PARA Dual System](sops/012-gtd-para-notion-skill.md)
+
+## Local AI CLI Series
+
+* [Gemini CLI - Multimodal](sops/005-gemini-cli-multimodal-integration.md)
+* [Codex CLI - Code Generation](sops/009-codex-cli-integration.md)
+* [Local AI Legion - Free Multi-Agent](sops/010-multi-agent-collaboration.md)
+
+## Auto-Publishing
+
+* [Juejin Auto-Publish](sops/013-juejin-auto-publish-mcp-playwright.md)
+* [WeChat MP Auto-Publish](sops/014-wechat-mp-auto-publish-mcp-playwright.md)
 
 ## Thoughts & Essays
 
