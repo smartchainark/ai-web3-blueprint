@@ -327,14 +327,137 @@ class CodeReviewer:
 3. Design human confirmation workflow
 ```
 
-## Future Iterations
+## Multi-Round Iterative Discussion
 
-| Phase | Feature | Status |
-|-------|---------|--------|
-| 1 | Parallel Q&A | ✅ Current version |
-| 2 | Smart routing (auto-select agent) | Planned |
-| 3 | Multi-round iterative discussion | Planned |
-| 4 | Role template marketplace | Planned |
+Supports multi-round interaction between agents for responding, questioning, and supplementing.
+
+### Trigger Methods
+
+```
+/collab --rounds=3 {question}     # Specify 3 rounds
+/debate --deep {topic}            # Auto-enable multi-round
+```
+
+### Workflow
+
+```
+Round 1: Independent answers
+    ↓
+(Summary compression)
+    ↓
+Round 2: Respond/rebut after seeing others' views
+    ↓
+(Summary compression)
+    ↓
+Round 3: Reach consensus or clarify disagreements
+    ↓
+Final summary
+```
+
+### Context Passing (Summary Compression)
+
+After each round, Claude orchestrator summarizes results; next round only receives summary:
+
+```
+Round N+1 prompt template:
+
+【History Summary】
+Round 1 key points:
+- Analyst: {Claude core view, 50 chars}
+- Creative: {Gemini core view, 50 chars}
+- Engineer: {Codex core view, 50 chars}
+
+Round 2 key points:
+- ...
+
+【This Round Task】
+Please supplement or rebut the above views...
+
+Question: {original question}
+```
+
+### Summary Compression Implementation
+
+After collecting each round's results, call Claude to generate summary:
+
+```yaml
+Task: Generate round summary
+  subagent_type: general-purpose
+  model: haiku  # Use cheap model for summaries
+  prompt: |
+    Compress each of the following three views into one sentence (max 50 chars):
+
+    Analyst original: {claude_response}
+    Creative original: {gemini_response}
+    Engineer original: {codex_response}
+
+    Output format:
+    - Analyst: ...
+    - Creative: ...
+    - Engineer: ...
+```
+
+### Multi-Round Output Format
+
+```markdown
+## Question: {user question}
+
+---
+
+### Round 1: Independent Answers
+
+#### 🔍 Claude (Analyst)
+{detailed answer}
+
+#### 💡 Gemini (Creative)
+{detailed answer}
+
+#### 🔧 Codex (Engineer)
+{detailed answer}
+
+---
+
+### Round 2: Interactive Discussion
+
+#### 🔍 Claude (Analyst)
+> Regarding Gemini's view: ...
+{supplement/rebuttal}
+
+#### 💡 Gemini (Creative)
+> Regarding Codex's view: ...
+{supplement/rebuttal}
+
+#### 🔧 Codex (Engineer)
+> Regarding Claude's view: ...
+{supplement/rebuttal}
+
+---
+
+### Round 3: Reaching Consensus
+
+{Claude orchestrator summary}
+
+---
+
+## 📊 Final Summary
+
+### ✅ Consensus Points
+- ...
+
+### ⚠️ Remaining Disagreements
+- ...
+
+### 🎯 Recommended Actions
+1. ...
+```
+
+### Round Control Parameters
+
+| Parameter | Description | Default |
+|-----------|-------------|---------|
+| `--rounds=N` | Number of discussion rounds | 1 |
+| `--max-rounds` | Maximum round limit | 5 |
+| `--auto-stop` | Auto-stop when consensus reached | true |
 
 ## References
 
