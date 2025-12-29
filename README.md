@@ -44,6 +44,7 @@ This white paper documents the SOPs, techniques, and insights we've gathered fro
 | 006 | [Claude Skill Creation SOP](./en/sops/006-claude-skill-creation-sop.md) | Standardize skill creation conventions | 2025-12-29 |
 | 007 | [WeChat to Notion Auto-Practice](./en/sops/007-wechat-to-notion-auto-practice.md) | AI simulates author's operations, building knowledge base | 2025-12-29 |
 | 008 | [GitBook + GitHub Workflow](./en/sops/008-gitbook-github-documentation.md) | Bilingual docs with GitBook structure + GitHub hosting | 2025-12-29 |
+| 011 | [Skill Force Activation Hook](./en/sops/011-skill-force-activation-hook.md) | Boost skill activation from 20% to 84% | 2025-12-29 |
 
 ### Local AI CLI Series
 
