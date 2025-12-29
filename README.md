@@ -43,6 +43,7 @@ This white paper documents the SOPs, techniques, and insights we've gathered fro
 | 004 | [Claude Skills Cross-Platform Setup](./en/sops/004-claude-skills-setup.md) | Cross-platform skill deployment, multi-device sync | 2025-12-29 |
 | 005 | [Gemini CLI Multimodal Integration](./en/sops/005-gemini-cli-multimodal-integration.md) | Skill + Subagent for multimodal processing | 2025-12-29 |
 | 006 | [Claude Skill Creation SOP](./en/sops/006-claude-skill-creation-sop.md) | Standardize skill creation conventions | 2025-12-29 |
+| 007 | [WeChat to Notion Auto-Practice](./en/sops/007-wechat-to-notion-auto-practice.md) | AI simulates author's operations, building knowledge base | 2025-12-29 |
 
 ### Thoughts & Essays
 

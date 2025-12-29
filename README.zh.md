@@ -43,6 +43,7 @@
 | 004 | [Claude Skills 跨平台部署](./zh/sops/004-claude-skills-setup.md) | 技能跨平台部署、启用/禁用、多设备同步 | 2025-12-29 |
 | 005 | [Gemini CLI 多模态集成](./zh/sops/005-gemini-cli-multimodal-integration.md) | Skill + 子代理架构实现多模态处理 | 2025-12-29 |
 | 006 | [Claude 技能创建规范化](./zh/sops/006-claude-skill-creation-sop.md) | 让 Claude 自动遵循技能库规范创建技能 | 2025-12-29 |
+| 007 | [微信文章到 Notion 自动实践](./zh/sops/007-wechat-to-notion-auto-practice.md) | AI 自动模拟作者操作，沉淀知识库并学以致用 | 2025-12-29 |
 
 ### 思考 & 随笔
 
