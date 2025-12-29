@@ -238,11 +238,77 @@ npm install gh-pages --save-dev
 npx gh-pages -d _book
 ```
 
-### 选项 2：GitBook.com
+### 选项 2：GitBook.com（推荐）
 
-1. 在 [gitbook.com](https://www.gitbook.com) 创建 Space
-2. 连接 GitHub 仓库
-3. 自动同步发布
+GitBook.com 提供托管服务，支持 GitHub 自动同步，无需手动构建。
+
+#### 步骤 1：创建 GitBook 账号和 Space
+
+1. 访问 [gitbook.com](https://www.gitbook.com) 并注册账号
+2. 创建新的 Organization（或使用个人空间）
+3. 点击 **"Create a space"** 创建文档空间
+4. 输入空间名称（如 "SOP蓝皮书"）
+
+#### 步骤 2：连接 GitHub 仓库
+
+1. 进入 Space 设置 → **Git Sync**
+2. 点击 **"Connect with GitHub"**
+3. 授权 GitBook 访问你的 GitHub 账号
+4. 选择目标仓库（如 `smartchainark/ai-web3-blueprint`）
+5. 配置同步选项：
+   - **Branch**: `main`（或你的主分支）
+   - **Project directory**: `./`（根目录，因为 SUMMARY.md 在根目录）
+
+#### 步骤 3：配置 Monorepo（可选）
+
+如果你的文档在子目录中，配置 **Project directory**：
+
+| 场景 | Project directory 设置 |
+|------|------------------------|
+| SUMMARY.md 在根目录 | `./` |
+| 文档在 docs/ 子目录 | `./docs` |
+| 文档在 documentation/ | `./documentation` |
+
+#### 步骤 4：发布站点
+
+1. 返回 Space 主页
+2. 点击右上角 **"Publish"** 按钮
+3. 或在 **Get started** 列表中点击 **"Publish your site"**
+4. GitBook 会生成一个默认域名：
+   ```
+   https://your-org.gitbook.io/space-name/
+   ```
+
+#### 步骤 5：配置自定义域名（可选）
+
+1. 进入 Space 设置 → **Custom domain**
+2. 输入你的域名（如 `docs.example.com`）
+3. 在 DNS 服务商添加 CNAME 记录：
+   ```
+   docs.example.com → hosting.gitbook.io
+   ```
+4. 等待 DNS 生效（通常几分钟到 24 小时）
+5. GitBook 会自动配置 SSL 证书
+
+#### 自动同步机制
+
+配置完成后，每次 `git push` 到 GitHub：
+
+```
+git push → GitHub 接收 → GitBook 自动拉取 → 站点更新
+```
+
+**同步延迟**：通常在 1-2 分钟内完成
+
+#### GitBook.com 免费版限制
+
+| 功能 | 免费版 | 付费版 |
+|------|--------|--------|
+| 公开 Space | ✅ 无限 | ✅ 无限 |
+| 私有 Space | 1 个 | 无限 |
+| 自定义域名 | ✅ | ✅ |
+| 团队成员 | 1 人 | 无限 |
+| Git 同步 | ✅ | ✅ |
 
 ### 选项 3：静态托管
 

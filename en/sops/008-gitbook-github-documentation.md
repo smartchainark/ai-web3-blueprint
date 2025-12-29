@@ -238,11 +238,77 @@ npm install gh-pages --save-dev
 npx gh-pages -d _book
 ```
 
-### Option 2: GitBook.com
+### Option 2: GitBook.com (Recommended)
 
-1. Create a Space at [gitbook.com](https://www.gitbook.com)
-2. Connect GitHub repository
-3. Auto-sync and publish
+GitBook.com provides hosting with automatic GitHub sync - no manual builds required.
+
+#### Step 1: Create GitBook Account and Space
+
+1. Visit [gitbook.com](https://www.gitbook.com) and sign up
+2. Create a new Organization (or use personal space)
+3. Click **"Create a space"** to create a documentation space
+4. Enter space name (e.g., "SOP Blueprint")
+
+#### Step 2: Connect GitHub Repository
+
+1. Go to Space settings → **Git Sync**
+2. Click **"Connect with GitHub"**
+3. Authorize GitBook to access your GitHub account
+4. Select target repository (e.g., `smartchainark/ai-web3-blueprint`)
+5. Configure sync options:
+   - **Branch**: `main` (or your main branch)
+   - **Project directory**: `./` (root, since SUMMARY.md is in root)
+
+#### Step 3: Configure Monorepo (Optional)
+
+If your docs are in a subdirectory, configure **Project directory**:
+
+| Scenario | Project directory setting |
+|----------|---------------------------|
+| SUMMARY.md in root | `./` |
+| Docs in docs/ subdirectory | `./docs` |
+| Docs in documentation/ | `./documentation` |
+
+#### Step 4: Publish Site
+
+1. Return to Space homepage
+2. Click **"Publish"** button in top right
+3. Or click **"Publish your site"** in the **Get started** list
+4. GitBook will generate a default domain:
+   ```
+   https://your-org.gitbook.io/space-name/
+   ```
+
+#### Step 5: Configure Custom Domain (Optional)
+
+1. Go to Space settings → **Custom domain**
+2. Enter your domain (e.g., `docs.example.com`)
+3. Add CNAME record at your DNS provider:
+   ```
+   docs.example.com → hosting.gitbook.io
+   ```
+4. Wait for DNS propagation (usually minutes to 24 hours)
+5. GitBook will auto-configure SSL certificate
+
+#### Auto-Sync Mechanism
+
+Once configured, every `git push` to GitHub triggers:
+
+```
+git push → GitHub receives → GitBook pulls → Site updates
+```
+
+**Sync delay**: Usually completes within 1-2 minutes
+
+#### GitBook.com Free Tier Limits
+
+| Feature | Free | Paid |
+|---------|------|------|
+| Public Spaces | ✅ Unlimited | ✅ Unlimited |
+| Private Spaces | 1 | Unlimited |
+| Custom Domain | ✅ | ✅ |
+| Team Members | 1 | Unlimited |
+| Git Sync | ✅ | ✅ |
 
 ### Option 3: Static Hosting
 
