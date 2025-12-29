@@ -42,6 +42,7 @@ This white paper documents the SOPs, techniques, and insights we've gathered fro
 | 003 | [Cursor IDE Skills & MCP Setup](./docs/en/003-cursor-openskills-mcp-setup.md) | OpenSkills installation and Notion MCP configuration in Cursor IDE | 2025-12-29 |
 | 004 | [Claude Skills Cross-Platform Setup](./docs/en/004-claude-skills-setup.md) | Cross-platform skill deployment, enable/disable, multi-device sync | 2025-12-29 |
 | 005 | [Gemini CLI Multimodal Integration](./docs/en/005-gemini-cli-multimodal-integration.md) | Skill + Subagent architecture for multimodal processing (images/video/audio/PDF) | 2025-12-29 |
+| 006 | [Claude Skill Creation Standardization SOP](./docs/en/006-claude-skill-creation-sop.md) | Make Claude automatically follow skill library conventions | 2025-12-29 |
 
 ### Thoughts & Essays
 
