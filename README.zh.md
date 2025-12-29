@@ -45,6 +45,7 @@
 | 006 | [Claude 技能创建规范化](./zh/sops/006-claude-skill-creation-sop.md) | 让 Claude 自动遵循技能库规范创建技能 | 2025-12-29 |
 | 007 | [微信文章到 Notion 自动实践](./zh/sops/007-wechat-to-notion-auto-practice.md) | AI 自动模拟作者操作，沉淀知识库并学以致用 | 2025-12-29 |
 | 008 | [GitBook + GitHub 文档工作流](./zh/sops/008-gitbook-github-documentation.md) | GitBook 结构 + GitHub 托管的双语文档管理 | 2025-12-29 |
+| 009 | [Codex CLI 集成](./zh/sops/009-codex-cli-integration.md) | 在 Claude Code 中调用 OpenAI Codex 进行代码生成 | 2025-12-29 |
 
 ### 思考 & 随笔
 
