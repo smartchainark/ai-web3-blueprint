@@ -19,15 +19,6 @@ This white paper documents the SOPs, techniques, and insights we've gathered fro
 - **Web3 Integration** — Connecting AI agents with blockchain and decentralized systems
 - **Best Practices** — Patterns and anti-patterns from real-world implementations
 
-## Quick Navigation
-
-| Section | Description |
-|---------|-------------|
-| [Getting Started](getting-started/README.md) | Prerequisites and first steps |
-| [SOPs & Guides](sops/README.md) | Step-by-step operational procedures |
-| [Thoughts](thoughts/README.md) | Essays and reflections |
-| [Resources](resources/glossary.md) | Glossary, tools, and FAQ |
-
 ## Topics Covered
 
 - **AI Agents** — Architecture, tool use, multi-agent systems

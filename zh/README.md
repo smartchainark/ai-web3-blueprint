@@ -19,15 +19,6 @@
 - **Web3 集成** — 将 AI Agent 与区块链和去中心化系统连接
 - **最佳实践** — 来自真实实现的模式和反模式
 
-## 快速导航
-
-| 章节 | 说明 |
-|------|------|
-| [快速开始](getting-started/README.md) | 前置条件和第一步 |
-| [SOP 与指南](sops/README.md) | 分步操作流程 |
-| [思考与随笔](thoughts/README.md) | 文章和反思 |
-| [资源](resources/glossary.md) | 术语表、工具和常见问题 |
-
 ## 涵盖主题
 
 - **AI Agents** — 架构、工具使用、多代理系统
