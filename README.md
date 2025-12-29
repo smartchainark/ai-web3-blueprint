@@ -7,7 +7,7 @@
 
 > A collection of SOPs, guides, and insights at the intersection of AI and Web3.
 
-[中文版](./README.zh.md) | [English Docs](./en/README.md) | [中文文档](./zh/README.md)
+[中文版](./README.zh.md)
 
 ---
 
@@ -60,8 +60,6 @@ This white paper documents the SOPs, techniques, and insights we've gathered fro
 
 ## Quick Links
 
-- [English Docs](./en/)
-- [中文文档](./zh/)
 - [Glossary](./en/resources/glossary.md)
 - [Tools & References](./en/resources/tools.md)
 

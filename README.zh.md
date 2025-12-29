@@ -7,7 +7,7 @@
 
 > AI 与 Web3 交叉领域的 SOP、指南与洞察合集。
 
-[English Version](./README.md) | [English Docs](./en/README.md) | [中文文档](./zh/README.md)
+[English](./README.md)
 
 ---
 
@@ -60,8 +60,6 @@
 
 ## 快速链接
 
-- [English Docs](./en/)
-- [中文文档](./zh/)
 - [术语表](./zh/resources/glossary.md)
 - [工具与参考](./zh/resources/tools.md)
 
