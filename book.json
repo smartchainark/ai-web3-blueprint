@@ -1,0 +1,16 @@
+{
+  "title": "AI x Web3 Programming White Paper",
+  "description": "A collection of SOPs, guides, and insights at the intersection of AI and Web3",
+  "author": "king",
+  "language": "en",
+  "structure": {
+    "readme": "README.md",
+    "summary": "SUMMARY.md"
+  },
+  "links": {
+    "sidebar": {
+      "GitHub": "https://github.com/smartchainark/ai-web3-blueprint"
+    }
+  },
+  "plugins": ["-sharing"]
+}

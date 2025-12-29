@@ -24,6 +24,7 @@ venv/
 dist/
 build/
 _site/
+_book/
 .cache/
 
 # Logs

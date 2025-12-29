@@ -7,7 +7,7 @@
 
 > A collection of SOPs, guides, and insights at the intersection of AI and Web3.
 
-[中文版](./README.zh.md)
+[中文版](./README.zh.md) | [English Docs](./en/README.md) | [中文文档](./zh/README.md)
 
 ---
 
@@ -15,11 +15,11 @@
 
 Hi, I'm **king**, a contributor to the x402 protocol and ranked in the top 4% globally on the Cursor 2025 leaderboard.
 
-After developing multiple AI x Web3 projects, we've come to realize that **Agent Skills are the future**—AI is no longer just about chatting, but about intelligent agents that can invoke tools, execute tasks, and collaborate on complex workflows.
+After developing multiple AI x Web3 projects, we've come to realize that **Agent Skills are the future** — AI is no longer just about chatting, but about intelligent agents that can invoke tools, execute tasks, and collaborate on complex workflows.
 
-This white paper documents the SOPs, techniques, and insights we've gathered from hands-on practice, focusing on the **intersection of AI Agents and Web3**. We'll keep updating with useful content, hoping to help you enter this exciting field.
+This white paper documents the SOPs, techniques, and insights we've gathered from hands-on practice, focusing on the **intersection of AI Agents and Web3**.
 
-> 💡 If you find this helpful, feel free to Star or share with your friends
+> If you find this helpful, feel free to Star or share with your friends
 
 ---
 
@@ -37,12 +37,12 @@ This white paper documents the SOPs, techniques, and insights we've gathered fro
 
 | # | Title | Description | Date |
 |---|-------|-------------|------|
-| 001 | [PRD to Tasks to Notification](./docs/en/001-notion-mcp-setup.md) | Complete workflow: PRD → Notion tasks → Telegram notification | 2025-12-28 |
-| 002 | [Internal Comms to Multi-Format Export](./docs/en/002-internal-comms-to-exports.md) | Complete workflow: 3P update → PPTX/PDF/DOCX → Telegram notification | 2025-12-28 |
-| 003 | [Cursor IDE Skills & MCP Setup](./docs/en/003-cursor-openskills-mcp-setup.md) | OpenSkills installation and Notion MCP configuration in Cursor IDE | 2025-12-29 |
-| 004 | [Claude Skills Cross-Platform Setup](./docs/en/004-claude-skills-setup.md) | Cross-platform skill deployment, enable/disable, multi-device sync | 2025-12-29 |
-| 005 | [Gemini CLI Multimodal Integration](./docs/en/005-gemini-cli-multimodal-integration.md) | Skill + Subagent architecture for multimodal processing (images/video/audio/PDF) | 2025-12-29 |
-| 006 | [Claude Skill Creation Standardization SOP](./docs/en/006-claude-skill-creation-sop.md) | Make Claude automatically follow skill library conventions | 2025-12-29 |
+| 001 | [PRD to Tasks to Notification](./en/sops/001-notion-mcp-setup.md) | PRD → Notion tasks → Telegram notification | 2025-12-28 |
+| 002 | [Internal Comms to Multi-Format Export](./en/sops/002-internal-comms-to-exports.md) | 3P update → PPTX/PDF/DOCX → Telegram notification | 2025-12-28 |
+| 003 | [Cursor IDE Skills & MCP Setup](./en/sops/003-cursor-openskills-mcp-setup.md) | OpenSkills and Notion MCP in Cursor IDE | 2025-12-29 |
+| 004 | [Claude Skills Cross-Platform Setup](./en/sops/004-claude-skills-setup.md) | Cross-platform skill deployment, multi-device sync | 2025-12-29 |
+| 005 | [Gemini CLI Multimodal Integration](./en/sops/005-gemini-cli-multimodal-integration.md) | Skill + Subagent for multimodal processing | 2025-12-29 |
+| 006 | [Claude Skill Creation SOP](./en/sops/006-claude-skill-creation-sop.md) | Standardize skill creation conventions | 2025-12-29 |
 
 ### Thoughts & Essays
 
@@ -60,8 +60,10 @@ This white paper documents the SOPs, techniques, and insights we've gathered fro
 
 ## Quick Links
 
-- [All Documents (EN)](./docs/en/)
-- [All Thoughts (EN)](./thoughts/en/)
+- [English Docs](./en/)
+- [中文文档](./zh/)
+- [Glossary](./en/resources/glossary.md)
+- [Tools & References](./en/resources/tools.md)
 
 ---
 
