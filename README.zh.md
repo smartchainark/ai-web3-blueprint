@@ -46,6 +46,7 @@
 | 007 | [微信文章到 Notion 自动实践](./zh/sops/007-wechat-to-notion-auto-practice.md) | AI 自动模拟作者操作，沉淀知识库并学以致用 | 2025-12-29 |
 | 008 | [GitBook + GitHub 文档工作流](./zh/sops/008-gitbook-github-documentation.md) | GitBook 结构 + GitHub 托管的双语文档管理 | 2025-12-29 |
 | 009 | [Codex CLI 集成](./zh/sops/009-codex-cli-integration.md) | 在 Claude Code 中调用 OpenAI Codex 进行代码生成 | 2025-12-29 |
+| 010 | [Multi-Agent 协作系统](./zh/sops/010-multi-agent-collaboration.md) | Claude 调度 Gemini/Codex/Claude 并行回答 | 2025-12-29 |
 
 ### 思考 & 随笔
 
