@@ -41,6 +41,7 @@
 | 002 | [内部沟通到多格式导出](./docs/zh/002-internal-comms-to-exports.md) | 完整工作流：3P 更新 → PPTX/PDF/DOCX → Telegram 通知 | [PPTX](./exports/002-internal-comms-export.pptx) / [PDF](./exports/002-internal-comms-export.pdf) / [DOCX](./exports/002-internal-comms-export.docx) | 2025-12-28 |
 | 003 | [Cursor IDE 技能系统与 MCP 配置](./docs/zh/003-cursor-openskills-mcp-setup.md) | 在 Cursor IDE 中安装 OpenSkills 并配置 Notion MCP | - | 2025-12-29 |
 | 004 | [Claude Skills 跨平台部署与管理](./docs/zh/004-claude-skills-setup.md) | 技能系统的跨平台部署、启用/禁用、多设备同步 | - | 2025-12-29 |
+| 005 | [Claude Code 内调用 Gemini CLI 多模态方案](./docs/zh/005-gemini-cli-multimodal-integration.md) | Skill + 子代理架构实现多模态处理（图片/视频/音频/PDF） | - | 2025-12-29 |
 
 ### 思考 & 随笔
 
