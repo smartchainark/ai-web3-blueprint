@@ -57,6 +57,15 @@ Free, native-speed, no rate limits - leverage local CLI tools for AI collaborati
 | 009 | [Codex CLI Code Generation](./en/sops/009-codex-cli-integration.md) | GPT-5 level code generation and debugging | 2025-12-29 |
 | 010 | [Local AI Legion](./en/sops/010-multi-agent-collaboration.md) | Free parallel thinking with Gemini + Codex + Claude | 2025-12-29 |
 
+### Auto-Publishing
+
+Automate content publishing to Chinese platforms with MCP Playwright.
+
+| # | Title | Description | Date |
+|---|-------|-------------|------|
+| 013 | [Juejin Auto-Publish](./en/sops/013-juejin-auto-publish-mcp-playwright.md) | One-click publish to Juejin with session persistence | 2025-12-29 |
+| 014 | [WeChat MP Auto-Publish](./en/sops/014-wechat-mp-auto-publish-mcp-playwright.md) | Automate WeChat Official Account publishing | 2025-12-29 |
+
 ### Thoughts & Essays
 
 | Title | Topic | Date |

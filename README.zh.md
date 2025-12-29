@@ -57,6 +57,15 @@
 | 009 | [Codex CLI 代码生成](./zh/sops/009-codex-cli-integration.md) | GPT-5 级别代码生成与调试 | 2025-12-29 |
 | 010 | [本地 AI 军团](./zh/sops/010-multi-agent-collaboration.md) | 免费并行调用 Gemini + Codex + Claude 三大模型 | 2025-12-29 |
 
+### 自动发布
+
+使用 MCP Playwright 自动化发布内容到国内平台。
+
+| # | 标题 | 描述 | 日期 |
+|---|------|------|------|
+| 013 | [掘金文章自动发布](./zh/sops/013-juejin-auto-publish-mcp-playwright.md) | 一键发布到掘金，支持会话持久化 | 2025-12-29 |
+| 014 | [微信公众号自动发布](./zh/sops/014-wechat-mp-auto-publish-mcp-playwright.md) | 自动化微信公众号文章发布 | 2025-12-29 |
+
 ### 思考 & 随笔
 
 | 标题 | 主题 | 日期 |
