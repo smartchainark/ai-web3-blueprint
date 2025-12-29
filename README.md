@@ -44,6 +44,7 @@ This white paper documents the SOPs, techniques, and insights we've gathered fro
 | 005 | [Gemini CLI Multimodal Integration](./en/sops/005-gemini-cli-multimodal-integration.md) | Skill + Subagent for multimodal processing | 2025-12-29 |
 | 006 | [Claude Skill Creation SOP](./en/sops/006-claude-skill-creation-sop.md) | Standardize skill creation conventions | 2025-12-29 |
 | 007 | [WeChat to Notion Auto-Practice](./en/sops/007-wechat-to-notion-auto-practice.md) | AI simulates author's operations, building knowledge base | 2025-12-29 |
+| 008 | [GitBook + GitHub Workflow](./en/sops/008-gitbook-github-documentation.md) | Bilingual docs with GitBook structure + GitHub hosting | 2025-12-29 |
 
 ### Thoughts & Essays
 
