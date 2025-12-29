@@ -24,6 +24,7 @@
 
 * [掘金文章自动发布](sops/013-juejin-auto-publish-mcp-playwright.md)
 * [微信公众号自动发布](sops/014-wechat-mp-auto-publish-mcp-playwright.md)
+* [知乎专栏自动发布](sops/015-zhihu-auto-publish-mcp-playwright.md)
 
 ## 思考随笔
 

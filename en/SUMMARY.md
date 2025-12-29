@@ -24,6 +24,7 @@
 
 * [Juejin Auto-Publish](sops/013-juejin-auto-publish-mcp-playwright.md)
 * [WeChat MP Auto-Publish](sops/014-wechat-mp-auto-publish-mcp-playwright.md)
+* [Zhihu Auto-Publish](sops/015-zhihu-auto-publish-mcp-playwright.md)
 
 ## Thoughts & Essays
 

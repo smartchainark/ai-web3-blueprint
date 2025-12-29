@@ -65,6 +65,7 @@ Automate content publishing to Chinese platforms with MCP Playwright.
 |---|-------|-------------|------|
 | 013 | [Juejin Auto-Publish](./en/sops/013-juejin-auto-publish-mcp-playwright.md) | One-click publish to Juejin with session persistence | 2025-12-29 |
 | 014 | [WeChat MP Auto-Publish](./en/sops/014-wechat-mp-auto-publish-mcp-playwright.md) | Automate WeChat Official Account publishing | 2025-12-29 |
+| 015 | [Zhihu Auto-Publish](./en/sops/015-zhihu-auto-publish-mcp-playwright.md) | One-click publish to Zhihu Column with Markdown support | 2025-12-29 |
 
 ### Thoughts & Essays
 
