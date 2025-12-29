@@ -4,9 +4,15 @@
 
 **Document ID**: 009
 **Date**: 2025-12-29
-**Tags**: `Codex CLI` `OpenAI` `Claude Code` `Skill` `Code Generation`
+**Tags**: `Codex CLI` `OpenAI` `Claude Code` `Free` `Code Generation`
+**Series**: Local AI CLI Series (2/3)
 
 ---
+
+> 📚 **Series Navigation**
+> - [005 - Gemini CLI Multimodal](./005-gemini-cli-multimodal-integration.md)
+> - **009 - Codex CLI Code Generation (Current)**
+> - [010 - Local AI Legion - Free Multi-Agent](./010-multi-agent-collaboration.md)
 
 ## Overview
 

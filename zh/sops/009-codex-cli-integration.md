@@ -1,12 +1,18 @@
-# Claude Code 内调用 Codex CLI 编程助手
+# Codex CLI 代码生成集成
 
 > Skill + 子代理架构：在 Claude Code 中调用 OpenAI Codex 执行代码生成、调试、重构任务
 
 **文档编号**: 009
 **日期**: 2025-12-29
-**标签**: `Codex CLI` `OpenAI` `Claude Code` `Skill` `代码生成`
+**标签**: `Codex CLI` `OpenAI` `Claude Code` `免费` `代码生成`
+**系列**: 本地 AI CLI 系列 (2/3)
 
 ---
+
+> 📚 **系列导航**
+> - [005 - Gemini CLI 多模态处理](./005-gemini-cli-multimodal-integration.md)
+> - **009 - Codex CLI 代码生成（当前）**
+> - [010 - 本地 AI 军团 - 免费多Agent并行](./010-multi-agent-collaboration.md)
 
 ## 概述
 

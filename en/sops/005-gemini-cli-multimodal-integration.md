@@ -4,9 +4,15 @@
 
 **Document ID**: 005
 **Date**: 2025-12-29
-**Tags**: `Claude Code` `Gemini CLI` `Multimodal` `Skills` `Subagent`
+**Tags**: `Claude Code` `Gemini CLI` `Multimodal` `Free` `Subagent`
+**Series**: Local AI CLI Series (1/3)
 
 ---
+
+> 📚 **Series Navigation**
+> - **005 - Gemini CLI Multimodal (Current)**
+> - [009 - Codex CLI Code Generation](./009-codex-cli-integration.md)
+> - [010 - Local AI Legion - Free Multi-Agent](./010-multi-agent-collaboration.md)
 
 ## Overview
 

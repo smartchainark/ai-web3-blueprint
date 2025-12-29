@@ -1,21 +1,37 @@
-# Multi-Agent Collaboration System
+# Local AI Legion: Free Parallel Thinking with Three AI Models
 
-> Claude as orchestrator, coordinating Gemini/Codex/Claude to answer questions in parallel with multi-perspective insights.
+> Zero cost, unlimited speed, locally invoke Gemini + Codex + Claude for parallel AI collaboration.
 
 **Document ID**: 010
 **Date**: 2025-12-29
-**Tags**: `Multi-Agent` `Claude` `Gemini` `Codex` `Collaboration` `Brainstorming`
+**Tags**: `Multi-Agent` `Free` `Local-CLI` `Parallel` `Brainstorming`
+**Series**: Local AI CLI Series (3/3)
 
 ---
+
+## Why Local AI Legion?
+
+| Feature | Local CLI Approach | Traditional API Approach |
+|---------|-------------------|-------------------------|
+| **Cost** | Completely free | Pay per token |
+| **Speed** | Native speed, no network latency | API call latency |
+| **Rate Limits** | Unlimited | Subject to rate limits |
+| **Privacy** | Code never leaves your machine | Data passes through API servers |
+| **Offline** | Codex supports offline | Requires internet |
 
 ## Overview
 
 This SOP describes how to build a Multi-Agent collaboration system in Claude Code:
 
-- Claude as neutral orchestrator
-- Gemini, Codex, and Claude agents answering in parallel
-- Structured summary of multiple perspectives
-- Support for brainstorming, review, and debate scenarios
+- **Zero Cost**: Using local CLI, Gemini/Codex are completely free
+- **Native Speed**: Direct CLI invocation, no API delays
+- **Three AI Parallel**: Claude(analysis) + Gemini(creative) + Codex(engineering)
+- **Multi-Scenario**: Brainstorming, solution review, debate modes
+
+> 📚 **Series Navigation**
+> - [005 - Gemini CLI Multimodal](./005-gemini-cli-multimodal-integration.md)
+> - [009 - Codex CLI Code Generation](./009-codex-cli-integration.md)
+> - **010 - Local AI Legion (Current)**
 
 ## Architecture
 
@@ -458,6 +474,56 @@ Task: Generate round summary
 | `--rounds=N` | Number of discussion rounds | 1 |
 | `--max-rounds` | Maximum round limit | 5 |
 | `--auto-stop` | Auto-stop when consensus reached | true |
+
+## Skill Development
+
+This SOP has been developed as a Claude Code skill that can be triggered directly in conversations.
+
+### Skill File Structure
+
+```text
+library/multi-agent-collab/
+└── SKILL.md              # Skill definition file
+```
+
+### Skill Configuration
+
+```yaml
+---
+name: multi-agent-collab
+description: Multi-Agent collaboration system orchestrated by Claude, with Gemini/Codex/Claude
+             answering questions in parallel. Triggers on "multi-agent discuss", "brainstorm",
+             "three AIs together", etc.
+---
+```
+
+### Trigger Keywords
+
+| User Says | Triggers |
+|-----------|----------|
+| "Let multiple AIs discuss..." | ✅ |
+| "Brainstorm about..." | ✅ |
+| "Three agents analyze..." | ✅ |
+| "Compare different AI views..." | ✅ |
+| "/collab {question}" | ✅ |
+| "/brainstorm {topic}" | ✅ |
+
+### Install Skill
+
+```bash
+# Copy skill to Claude Code skill library
+cp -r library/multi-agent-collab ~/.claude/skills/
+
+# Or use symlink (recommended for easy updates)
+ln -s /path/to/library/multi-agent-collab ~/.claude/skills/multi-agent-collab
+```
+
+### Required Dependencies
+
+Ensure these skills are installed before use:
+
+- `gemini-cli` - Gemini CLI multimodal assistant
+- `codex-cli` - Codex CLI programming assistant
 
 ## References
 

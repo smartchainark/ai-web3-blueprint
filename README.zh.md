@@ -41,12 +41,19 @@
 | 002 | [内部沟通到多格式导出](./zh/sops/002-internal-comms-to-exports.md) | 3P 更新 → PPTX/PDF/DOCX → Telegram 通知 | 2025-12-28 |
 | 003 | [Cursor IDE 技能与 MCP 配置](./zh/sops/003-cursor-openskills-mcp-setup.md) | 在 Cursor 中安装 OpenSkills 并配置 Notion MCP | 2025-12-29 |
 | 004 | [Claude Skills 跨平台部署](./zh/sops/004-claude-skills-setup.md) | 技能跨平台部署、启用/禁用、多设备同步 | 2025-12-29 |
-| 005 | [Gemini CLI 多模态集成](./zh/sops/005-gemini-cli-multimodal-integration.md) | Skill + 子代理架构实现多模态处理 | 2025-12-29 |
 | 006 | [Claude 技能创建规范化](./zh/sops/006-claude-skill-creation-sop.md) | 让 Claude 自动遵循技能库规范创建技能 | 2025-12-29 |
 | 007 | [微信文章到 Notion 自动实践](./zh/sops/007-wechat-to-notion-auto-practice.md) | AI 自动模拟作者操作，沉淀知识库并学以致用 | 2025-12-29 |
 | 008 | [GitBook + GitHub 文档工作流](./zh/sops/008-gitbook-github-documentation.md) | GitBook 结构 + GitHub 托管的双语文档管理 | 2025-12-29 |
-| 009 | [Codex CLI 集成](./zh/sops/009-codex-cli-integration.md) | 在 Claude Code 中调用 OpenAI Codex 进行代码生成 | 2025-12-29 |
-| 010 | [Multi-Agent 协作系统](./zh/sops/010-multi-agent-collaboration.md) | Claude 调度 Gemini/Codex/Claude 并行回答 | 2025-12-29 |
+
+### 本地 AI CLI 系列
+
+免费、原生速度、无速率限制 - 利用本地 CLI 工具实现 AI 协作。
+
+| # | 标题 | 描述 | 日期 |
+|---|------|------|------|
+| 005 | [Gemini CLI 多模态处理](./zh/sops/005-gemini-cli-multimodal-integration.md) | 免费多模态处理，100 万 token 上下文 | 2025-12-29 |
+| 009 | [Codex CLI 代码生成](./zh/sops/009-codex-cli-integration.md) | GPT-5 级别代码生成与调试 | 2025-12-29 |
+| 010 | [本地 AI 军团](./zh/sops/010-multi-agent-collaboration.md) | 免费并行调用 Gemini + Codex + Claude 三大模型 | 2025-12-29 |
 
 ### 思考 & 随笔
 

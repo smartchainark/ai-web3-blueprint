@@ -41,12 +41,19 @@ This white paper documents the SOPs, techniques, and insights we've gathered fro
 | 002 | [Internal Comms to Multi-Format Export](./en/sops/002-internal-comms-to-exports.md) | 3P update → PPTX/PDF/DOCX → Telegram notification | 2025-12-28 |
 | 003 | [Cursor IDE Skills & MCP Setup](./en/sops/003-cursor-openskills-mcp-setup.md) | OpenSkills and Notion MCP in Cursor IDE | 2025-12-29 |
 | 004 | [Claude Skills Cross-Platform Setup](./en/sops/004-claude-skills-setup.md) | Cross-platform skill deployment, multi-device sync | 2025-12-29 |
-| 005 | [Gemini CLI Multimodal Integration](./en/sops/005-gemini-cli-multimodal-integration.md) | Skill + Subagent for multimodal processing | 2025-12-29 |
 | 006 | [Claude Skill Creation SOP](./en/sops/006-claude-skill-creation-sop.md) | Standardize skill creation conventions | 2025-12-29 |
 | 007 | [WeChat to Notion Auto-Practice](./en/sops/007-wechat-to-notion-auto-practice.md) | AI simulates author's operations, building knowledge base | 2025-12-29 |
 | 008 | [GitBook + GitHub Workflow](./en/sops/008-gitbook-github-documentation.md) | Bilingual docs with GitBook structure + GitHub hosting | 2025-12-29 |
-| 009 | [Codex CLI Integration](./en/sops/009-codex-cli-integration.md) | Call OpenAI Codex in Claude Code for code generation | 2025-12-29 |
-| 010 | [Multi-Agent Collaboration](./en/sops/010-multi-agent-collaboration.md) | Claude orchestrates Gemini/Codex/Claude for parallel answering | 2025-12-29 |
+
+### Local AI CLI Series
+
+Free, native-speed, no rate limits - leverage local CLI tools for AI collaboration.
+
+| # | Title | Description | Date |
+|---|-------|-------------|------|
+| 005 | [Gemini CLI Multimodal](./en/sops/005-gemini-cli-multimodal-integration.md) | Free multimodal processing with 1M token context | 2025-12-29 |
+| 009 | [Codex CLI Code Generation](./en/sops/009-codex-cli-integration.md) | GPT-5 level code generation and debugging | 2025-12-29 |
+| 010 | [Local AI Legion](./en/sops/010-multi-agent-collaboration.md) | Free parallel thinking with Gemini + Codex + Claude | 2025-12-29 |
 
 ### Thoughts & Essays
 
