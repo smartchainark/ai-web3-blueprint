@@ -26,6 +26,35 @@
 - **自动化** — Notion 集成、文档导出、通知
 - **Web3 开发** — 智能合约、DeFi、NFT（即将推出）
 
+## 文档索引
+
+### SOP & 指南
+- [001 - 需求到任务到通知](sops/001-notion-mcp-setup.md)
+- [002 - 内部沟通到多格式导出](sops/002-internal-comms-to-exports.md)
+- [003 - Cursor IDE 技能与 MCP 配置](sops/003-cursor-openskills-mcp-setup.md)
+- [004 - Claude Skills 跨平台部署](sops/004-claude-skills-setup.md)
+- [006 - Claude 技能创建规范化](sops/006-claude-skill-creation-sop.md)
+- [007 - 微信文章到 Notion 自动实践](sops/007-wechat-to-notion-auto-practice.md)
+- [008 - GitBook + GitHub 文档工作流](sops/008-gitbook-github-documentation.md)
+- [011 - 技能强制激活 Hook](sops/011-skill-force-activation-hook.md)
+- [012 - GTD + PARA 双系统](sops/012-gtd-para-notion-skill.md)
+
+### 本地 AI CLI 系列
+- [005 - Gemini CLI 多模态处理](sops/005-gemini-cli-multimodal-integration.md)
+- [009 - Codex CLI 代码生成](sops/009-codex-cli-integration.md)
+- [010 - 本地 AI 军团](sops/010-multi-agent-collaboration.md)
+
+### 自动发布
+- [013 - 掘金文章自动发布](sops/013-juejin-auto-publish-mcp-playwright.md)
+- [014 - 微信公众号自动发布](sops/014-wechat-mp-auto-publish-mcp-playwright.md)
+- [015 - 知乎专栏自动发布](sops/015-zhihu-auto-publish-mcp-playwright.md)
+
+### Web3 开发
+- [016 - Hardhat 智能合约最佳实践](sops/016-hardhat-smart-contract-best-practices.md)
+
+### 团队协作
+- [017 - Notion + Telegram 通知发布](sops/017-notion-telegram-notification-sop.md)
+
 ---
 
 **作者**: king

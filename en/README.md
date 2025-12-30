@@ -26,6 +26,35 @@ This white paper documents the SOPs, techniques, and insights we've gathered fro
 - **Automation** — Notion integration, document export, notifications
 - **Web3 Development** — Smart contracts, DeFi, NFTs (coming soon)
 
+## Document Index
+
+### SOPs & Guides
+- [001 - PRD to Tasks to Notification](sops/001-notion-mcp-setup.md)
+- [002 - Internal Comms to Multi-Format Export](sops/002-internal-comms-to-exports.md)
+- [003 - Cursor IDE Skills & MCP Setup](sops/003-cursor-openskills-mcp-setup.md)
+- [004 - Claude Skills Cross-Platform Setup](sops/004-claude-skills-setup.md)
+- [006 - Claude Skill Creation SOP](sops/006-claude-skill-creation-sop.md)
+- [007 - WeChat to Notion Auto-Practice](sops/007-wechat-to-notion-auto-practice.md)
+- [008 - GitBook + GitHub Workflow](sops/008-gitbook-github-documentation.md)
+- [011 - Skill Force Activation Hook](sops/011-skill-force-activation-hook.md)
+- [012 - GTD + PARA Dual System](sops/012-gtd-para-notion-skill.md)
+
+### Local AI CLI Series
+- [005 - Gemini CLI Multimodal](sops/005-gemini-cli-multimodal-integration.md)
+- [009 - Codex CLI Code Generation](sops/009-codex-cli-integration.md)
+- [010 - Local AI Legion](sops/010-multi-agent-collaboration.md)
+
+### Auto-Publishing
+- [013 - Juejin Auto-Publish](sops/013-juejin-auto-publish-mcp-playwright.md)
+- [014 - WeChat MP Auto-Publish](sops/014-wechat-mp-auto-publish-mcp-playwright.md)
+- [015 - Zhihu Auto-Publish](sops/015-zhihu-auto-publish-mcp-playwright.md)
+
+### Web3 Development
+- [016 - Hardhat Best Practices](sops/016-hardhat-smart-contract-best-practices.md)
+
+### Team Collaboration
+- [017 - Notion + Telegram Notification](sops/017-notion-telegram-notification-sop.md)
+
 ---
 
 **Author**: king
