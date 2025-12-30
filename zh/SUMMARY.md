@@ -26,6 +26,10 @@
 * [微信公众号自动发布](sops/014-wechat-mp-auto-publish-mcp-playwright.md)
 * [知乎专栏自动发布](sops/015-zhihu-auto-publish-mcp-playwright.md)
 
+## Web3 开发
+
+* [Hardhat 智能合约最佳实践](sops/016-hardhat-smart-contract-best-practices.md)
+
 ## 思考随笔
 
 * [即将推出](thoughts/README.md)

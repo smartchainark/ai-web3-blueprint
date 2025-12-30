@@ -67,6 +67,12 @@ Automate content publishing to Chinese platforms with MCP Playwright.
 | 014 | [WeChat MP Auto-Publish](./en/sops/014-wechat-mp-auto-publish-mcp-playwright.md) | Automate WeChat Official Account publishing | 2025-12-29 |
 | 015 | [Zhihu Auto-Publish](./en/sops/015-zhihu-auto-publish-mcp-playwright.md) | One-click publish to Zhihu Column with Markdown support | 2025-12-29 |
 
+### Web3 Development
+
+| # | Title | Description | Date |
+|---|-------|-------------|------|
+| 016 | [Hardhat Best Practices](./en/sops/016-hardhat-smart-contract-best-practices.md) | Multi-chain deployment, ABI export, skill templating | 2025-12-30 |
+
 ### Thoughts & Essays
 
 | Title | Topic | Date |

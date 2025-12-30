@@ -67,6 +67,12 @@
 | 014 | [微信公众号自动发布](./zh/sops/014-wechat-mp-auto-publish-mcp-playwright.md) | 自动化微信公众号文章发布 | 2025-12-29 |
 | 015 | [知乎专栏自动发布](./zh/sops/015-zhihu-auto-publish-mcp-playwright.md) | 一键发布到知乎，原生支持 Markdown | 2025-12-29 |
 
+### Web3 开发
+
+| # | 标题 | 描述 | 日期 |
+|---|------|------|------|
+| 016 | [Hardhat 智能合约最佳实践](./zh/sops/016-hardhat-smart-contract-best-practices.md) | 多链部署、ABI 导出、技能模板化 | 2025-12-30 |
+
 ### 思考 & 随笔
 
 | 标题 | 主题 | 日期 |
