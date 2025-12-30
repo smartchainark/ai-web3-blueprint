@@ -7,7 +7,9 @@
 
 > A collection of SOPs, guides, and insights at the intersection of AI and Web3.
 
-[中文版](./README.zh.md)
+[![GitBook](https://img.shields.io/badge/GitBook-Read%20Online-blue?logo=gitbook)](https://smartchainark.gitbook.io/ai-web3-sop)
+
+[中文版](./README.zh.md) | [📖 Read on GitBook](https://smartchainark.gitbook.io/ai-web3-sop)
 
 ---
 

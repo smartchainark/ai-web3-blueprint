@@ -7,7 +7,9 @@
 
 > AI 与 Web3 交叉领域的 SOP、指南与洞察合集。
 
-[English](./README.md)
+[![GitBook](https://img.shields.io/badge/GitBook-在线阅读-blue?logo=gitbook)](https://smartchainark.gitbook.io/ai-web3-sop)
+
+[English](./README.md) | [📖 在 GitBook 阅读](https://smartchainark.gitbook.io/ai-web3-sop)
 
 ---
 
