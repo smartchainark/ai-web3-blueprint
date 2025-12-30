@@ -73,6 +73,12 @@
 |---|------|------|------|
 | 016 | [Hardhat 智能合约最佳实践](./zh/sops/016-hardhat-smart-contract-best-practices.md) | 多链部署、ABI 导出、技能模板化 | 2025-12-30 |
 
+### 团队协作
+
+| # | 标题 | 描述 | 日期 |
+|---|------|------|------|
+| 017 | [Notion + Telegram 通知发布](./zh/sops/017-notion-telegram-notification-sop.md) | Notion API 发布文档 + Telegram 群通知 | 2025-12-31 |
+
 ### 思考 & 随笔
 
 | 标题 | 主题 | 日期 |

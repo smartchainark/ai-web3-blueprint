@@ -73,6 +73,12 @@ Automate content publishing to Chinese platforms with MCP Playwright.
 |---|-------|-------------|------|
 | 016 | [Hardhat Best Practices](./en/sops/016-hardhat-smart-contract-best-practices.md) | Multi-chain deployment, ABI export, skill templating | 2025-12-30 |
 
+### Team Collaboration
+
+| # | Title | Description | Date |
+|---|-------|-------------|------|
+| 017 | [Notion + Telegram Notification](./en/sops/017-notion-telegram-notification-sop.md) | Internal doc publishing with Notion API + Telegram bot | 2025-12-31 |
+
 ### Thoughts & Essays
 
 | Title | Topic | Date |
