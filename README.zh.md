@@ -81,6 +81,12 @@
 |---|------|------|------|
 | 017 | [Notion + Telegram 通知发布](./zh/sops/017-notion-telegram-notification-sop.md) | Notion API 发布文档 + Telegram 群通知 | 2025-12-31 |
 
+### 技能复刻
+
+| # | 标题 | 描述 | 日期 |
+|---|------|------|------|
+| 018 | [从 X 平台快速复刻技能](./zh/sops/018-skill-from-twitter-sop.md) | Grok 转文字稿 + Notion + Claude Code = 10 分钟复刻技能 | 2025-12-31 |
+
 ### 思考 & 随笔
 
 | 标题 | 主题 | 日期 |

@@ -81,6 +81,12 @@ Automate content publishing to Chinese platforms with MCP Playwright.
 |---|-------|-------------|------|
 | 017 | [Notion + Telegram Notification](./en/sops/017-notion-telegram-notification-sop.md) | Internal doc publishing with Notion API + Telegram bot | 2025-12-31 |
 
+### Skill Replication
+
+| # | Title | Description | Date |
+|---|-------|-------------|------|
+| 018 | [Replicate Skills from X Platform](./en/sops/018-skill-from-twitter-sop.md) | Grok transcript + Notion + Claude Code = 10-min skill replication | 2025-12-31 |
+
 ### Thoughts & Essays
 
 | Title | Topic | Date |
