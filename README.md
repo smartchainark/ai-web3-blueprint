@@ -87,6 +87,12 @@ Automate content publishing to Chinese platforms with MCP Playwright.
 |---|-------|-------------|------|
 | 018 | [Replicate Skills from X Platform](./en/sops/018-skill-from-twitter-sop.md) | Grok transcript + Notion + Claude Code = 10-min skill replication | 2025-12-31 |
 
+### Knowledge Management
+
+| # | Title | Description | Date |
+|---|-------|-------------|------|
+| 019 | [Conversation to Reusable Asset](./en/sops/019-conversation-to-reusable-asset.md) | Turn dev conversations into reusable skills, SOPs, and standards | 2026-01-01 |
+
 ### Thoughts & Essays
 
 | Title | Topic | Date |
