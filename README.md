@@ -48,6 +48,7 @@ This white paper documents the SOPs, techniques, and insights we've gathered fro
 | 008 | [GitBook + GitHub Workflow](./en/sops/008-gitbook-github-documentation.md) | Bilingual docs with GitBook structure + GitHub hosting | 2025-12-29 |
 | 011 | [Skill Force Activation Hook](./en/sops/011-skill-force-activation-hook.md) | Boost skill activation from 20% to 84% | 2025-12-29 |
 | 012 | [GTD + PARA Dual System](./en/sops/012-gtd-para-notion-skill.md) | AI-powered task management with Notion MCP | 2025-12-29 |
+| 019 | [Conversation to Reusable Asset](./en/sops/019-conversation-to-reusable-asset.md) | Turn dev conversations into reusable skills, SOPs, and standards | 2026-01-01 |
 
 ### Local AI CLI Series
 
@@ -86,12 +87,6 @@ Automate content publishing to Chinese platforms with MCP Playwright.
 | # | Title | Description | Date |
 |---|-------|-------------|------|
 | 018 | [Replicate Skills from X Platform](./en/sops/018-skill-from-twitter-sop.md) | Grok transcript + Notion + Claude Code = 10-min skill replication | 2025-12-31 |
-
-### Knowledge Management
-
-| # | Title | Description | Date |
-|---|-------|-------------|------|
-| 019 | [Conversation to Reusable Asset](./en/sops/019-conversation-to-reusable-asset.md) | Turn dev conversations into reusable skills, SOPs, and standards | 2026-01-01 |
 
 ### Thoughts & Essays
 

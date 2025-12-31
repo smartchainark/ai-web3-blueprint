@@ -48,6 +48,7 @@
 | 008 | [GitBook + GitHub 文档工作流](./zh/sops/008-gitbook-github-documentation.md) | GitBook 结构 + GitHub 托管的双语文档管理 | 2025-12-29 |
 | 011 | [技能强制激活 Hook](./zh/sops/011-skill-force-activation-hook.md) | 将技能激活率从 20% 提升到 84% | 2025-12-29 |
 | 012 | [GTD + PARA 双系统](./zh/sops/012-gtd-para-notion-skill.md) | AI 驱动的任务管理 + Notion MCP 自动化 | 2025-12-29 |
+| 019 | [从开发沟通到可复用资产](./zh/sops/019-conversation-to-reusable-asset.md) | 将开发对话沉淀为技能、SOP、规范等可复用资产 | 2026-01-01 |
 
 ### 本地 AI CLI 系列
 
@@ -86,12 +87,6 @@
 | # | 标题 | 描述 | 日期 |
 |---|------|------|------|
 | 018 | [从 X 平台快速复刻技能](./zh/sops/018-skill-from-twitter-sop.md) | Grok 转文字稿 + Notion + Claude Code = 10 分钟复刻技能 | 2025-12-31 |
-
-### 知识管理
-
-| # | 标题 | 描述 | 日期 |
-|---|------|------|------|
-| 019 | [从开发沟通到可复用资产](./zh/sops/019-conversation-to-reusable-asset.md) | 将开发对话沉淀为技能、SOP、规范等可复用资产 | 2026-01-01 |
 
 ### 思考 & 随笔
 
