@@ -296,6 +296,29 @@ Claude：[输出完整文章]
 
 ---
 
+## 下载技能包
+
+📦 **访谈协作技能包**：[interview-collab.zip](../../assets/skills/interview-collab.zip)
+
+**安装方法**：
+
+```bash
+# 1. 下载并解压
+unzip interview-collab.zip -d ~/.claude/skills/
+
+# 2. 或者放入技能库（推荐）
+unzip interview-collab.zip -d ~/Projects/my_skils/library/
+cd ~/Projects/my_skils/enabled && ln -s ../library/interview-collab .
+```
+
+**包含内容**：
+
+- `SKILL.md` - 主技能文件
+- `references/` - 问题库、平台风格指南、故事提取指南
+- `scripts/` - Python 状态追踪脚本
+
+---
+
 ## 参考资源
 
 - [Grok](https://grok.x.ai) - X 平台 AI 助手

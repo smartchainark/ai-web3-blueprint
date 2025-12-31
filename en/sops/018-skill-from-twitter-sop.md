@@ -296,6 +296,29 @@ Understand others' approaches, combine with your needs, create your own tools.
 
 ---
 
+## Download Skill Package
+
+📦 **Interview Collab Skill Package**: [interview-collab.zip](../../assets/skills/interview-collab.zip)
+
+**Installation**:
+
+```bash
+# 1. Download and extract
+unzip interview-collab.zip -d ~/.claude/skills/
+
+# 2. Or add to skill library (recommended)
+unzip interview-collab.zip -d ~/Projects/my_skils/library/
+cd ~/Projects/my_skils/enabled && ln -s ../library/interview-collab .
+```
+
+**Contents**:
+
+- `SKILL.md` - Main skill file
+- `references/` - Question bank, platform style guides, story extraction guide
+- `scripts/` - Python state tracking script
+
+---
+
 ## Resources
 
 - [Grok](https://grok.x.ai) - X Platform AI Assistant
