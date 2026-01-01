@@ -75,6 +75,7 @@ Automate content publishing to Chinese platforms with MCP Playwright.
 | # | Title | Description | Date |
 |---|-------|-------------|------|
 | 016 | [Hardhat Best Practices](./en/sops/016-hardhat-smart-contract-best-practices.md) | Multi-chain deployment, ABI export, skill templating | 2025-12-30 |
+| 020 | [One-Click Deploy Automation](./en/sops/020-one-click-deploy-automation.md) | Contract deploy → config sync → build → deploy → notify | 2026-01-01 |
 
 ### Team Collaboration
 

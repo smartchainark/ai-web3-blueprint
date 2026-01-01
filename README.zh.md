@@ -75,6 +75,7 @@
 | # | 标题 | 描述 | 日期 |
 |---|------|------|------|
 | 016 | [Hardhat 智能合约最佳实践](./zh/sops/016-hardhat-smart-contract-best-practices.md) | 多链部署、ABI 导出、技能模板化 | 2025-12-30 |
+| 020 | [一键发布自动化](./zh/sops/020-one-click-deploy-automation.md) | 合约部署 → 配置同步 → 打包 → 发布 → 通知 | 2026-01-01 |
 
 ### 团队协作
 
