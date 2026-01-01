@@ -69,6 +69,7 @@
 | 013 | [掘金文章自动发布](./zh/sops/013-juejin-auto-publish-mcp-playwright.md) | 一键发布到掘金，支持会话持久化 | 2025-12-29 |
 | 014 | [微信公众号自动发布](./zh/sops/014-wechat-mp-auto-publish-mcp-playwright.md) | 自动化微信公众号文章发布 | 2025-12-29 |
 | 015 | [知乎专栏自动发布](./zh/sops/015-zhihu-auto-publish-mcp-playwright.md) | 一键发布到知乎，原生支持 Markdown | 2025-12-29 |
+| 023 | [Claude Code Medium 发布](./zh/sops/023-claude-code-medium-publish-workflow.md) | 本地文档到 Medium，Chrome MCP 自动化 | 2025-01-01 |
 
 ### Web3 开发
 
