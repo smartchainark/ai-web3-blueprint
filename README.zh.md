@@ -83,6 +83,7 @@
 | # | 标题 | 描述 | 日期 |
 |---|------|------|------|
 | 017 | [Notion + Telegram 通知发布](./zh/sops/017-notion-telegram-notification-sop.md) | Notion API 发布文档 + Telegram 群通知 | 2025-12-31 |
+| 024 | [Telegram Bot 反馈闭环](./zh/sops/024-telegram-bot-feedback-loop.md) | Bot 拉取反馈 → AI 修复 → 部署 → 通知 = 正反馈循环 | 2025-01-02 |
 
 ### 技能复刻
 

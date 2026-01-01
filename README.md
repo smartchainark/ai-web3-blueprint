@@ -83,6 +83,7 @@ Automate content publishing to Chinese platforms with MCP Playwright.
 | # | Title | Description | Date |
 |---|-------|-------------|------|
 | 017 | [Notion + Telegram Notification](./en/sops/017-notion-telegram-notification-sop.md) | Internal doc publishing with Notion API + Telegram bot | 2025-12-31 |
+| 024 | [Telegram Bot Feedback Loop](./en/sops/024-telegram-bot-feedback-loop.md) | Bot pulls feedback → AI fixes → deploy → notify = positive loop | 2025-01-02 |
 
 ### Skill Replication
 
