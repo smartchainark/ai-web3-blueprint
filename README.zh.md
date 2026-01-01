@@ -89,6 +89,12 @@
 |---|------|------|------|
 | 018 | [从 X 平台快速复刻技能](./zh/sops/018-skill-from-twitter-sop.md) | Grok 转文字稿 + Notion + Claude Code = 10 分钟复刻技能 | 2025-12-31 |
 
+### AI 媒体生成
+
+| # | 标题 | 描述 | 日期 |
+|---|------|------|------|
+| 022 | [Veo 首尾帧视频生成](./zh/sops/022-veo-video-generation-with-keyframes.md) | 基于首尾帧插值的 Image-to-Video 生成 | 2025-01-01 |
+
 ### 思考 & 随笔
 
 | 标题 | 主题 | 日期 |

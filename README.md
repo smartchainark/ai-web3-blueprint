@@ -89,6 +89,12 @@ Automate content publishing to Chinese platforms with MCP Playwright.
 |---|-------|-------------|------|
 | 018 | [Replicate Skills from X Platform](./en/sops/018-skill-from-twitter-sop.md) | Grok transcript + Notion + Claude Code = 10-min skill replication | 2025-12-31 |
 
+### AI Media Generation
+
+| # | Title | Description | Date |
+|---|-------|-------------|------|
+| 022 | [Veo Keyframe Video Generation](./en/sops/022-veo-video-generation-with-keyframes.md) | Image-to-Video with first/last frame interpolation | 2025-01-01 |
+
 ### Thoughts & Essays
 
 | Title | Topic | Date |
