@@ -48,9 +48,11 @@ This white paper documents the SOPs, techniques, and insights we've gathered fro
 - [013 - Juejin Auto-Publish](sops/013-juejin-auto-publish-mcp-playwright.md)
 - [014 - WeChat MP Auto-Publish](sops/014-wechat-mp-auto-publish-mcp-playwright.md)
 - [015 - Zhihu Auto-Publish](sops/015-zhihu-auto-publish-mcp-playwright.md)
+- [021 - Article Generation Pipeline](sops/021-article-generation-pipeline.md)
 
 ### Web3 Development
 - [016 - Hardhat Best Practices](sops/016-hardhat-smart-contract-best-practices.md)
+- [020 - One-Click Deploy Automation](sops/020-one-click-deploy-automation.md)
 
 ### Team Collaboration
 - [017 - Notion + Telegram Notification](sops/017-notion-telegram-notification-sop.md)

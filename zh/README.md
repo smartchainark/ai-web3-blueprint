@@ -48,9 +48,11 @@
 - [013 - 掘金文章自动发布](sops/013-juejin-auto-publish-mcp-playwright.md)
 - [014 - 微信公众号自动发布](sops/014-wechat-mp-auto-publish-mcp-playwright.md)
 - [015 - 知乎专栏自动发布](sops/015-zhihu-auto-publish-mcp-playwright.md)
+- [021 - 文章生成流水线](sops/021-article-generation-pipeline.md)
 
 ### Web3 开发
 - [016 - Hardhat 智能合约最佳实践](sops/016-hardhat-smart-contract-best-practices.md)
+- [020 - 一键发布自动化](sops/020-one-click-deploy-automation.md)
 
 ### 团队协作
 - [017 - Notion + Telegram 通知发布](sops/017-notion-telegram-notification-sop.md)

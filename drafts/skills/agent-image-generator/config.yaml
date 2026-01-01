@@ -1,0 +1,142 @@
+# Agent Image Generator 配置文件
+
+# 基础设置
+settings:
+  # 默认输出目录
+  output_dir: "./images"
+
+  # 文件命名格式
+  # 可用变量: {timestamp}, {description}, {style}, {random}
+  filename_format: "{timestamp}_{description}"
+
+  # 默认图片格式
+  default_format: "png"
+
+  # 默认尺寸比例
+  default_aspect_ratio: "16:9"
+
+# Gemini 设置
+gemini:
+  # 网站地址
+  url: "https://gemini.google.com/app"
+
+  # 生成超时时间（毫秒）
+  timeout: 60000
+
+  # 重试次数
+  max_retries: 2
+
+  # 重试间隔（毫秒）
+  retry_delay: 3000
+
+  # 会话持久化
+  persistent_session: true
+
+# 提示词生成设置
+prompt_generator:
+  # 默认语言（Gemini 对英文支持更好）
+  language: "en"
+
+  # 是否添加质量参数
+  add_quality_params: true
+
+  # 默认质量参数
+  quality_params: "high resolution, detailed, 4K"
+
+  # 是否自动选择模板
+  auto_select_template: true
+
+# 模板优先级（按场景自动匹配）
+template_priority:
+  # 关键词 -> 模板映射
+  keywords:
+    - match: ["科技", "技术", "tech", "code", "编程", "AI", "程序"]
+      template: "tech-style"
+      weight: 10
+
+    - match: ["插画", "卡通", "可爱", "扁平", "illustration"]
+      template: "illustration"
+      weight: 10
+
+    - match: ["网站", "首页", "hero", "banner", "着陆页"]
+      template: "hero-banner"
+      weight: 10
+
+    - match: ["封面", "头图", "cover", "博客"]
+      template: "blog-cover"
+      weight: 8
+
+# 配色方案
+color_palettes:
+  tech-blue:
+    name: "科技蓝"
+    primary: "#1a73e8"
+    secondary: "#4285f4"
+    accent: "#00d4ff"
+    background: "#0a1628"
+
+  warm-orange:
+    name: "暖阳橙"
+    primary: "#ff6b35"
+    secondary: "#f7c59f"
+    accent: "#efa94a"
+    background: "#fff5eb"
+
+  geek-purple:
+    name: "极客紫"
+    primary: "#6366f1"
+    secondary: "#8b5cf6"
+    accent: "#c084fc"
+    background: "#1e1b4b"
+
+  nature-green:
+    name: "自然绿"
+    primary: "#10b981"
+    secondary: "#34d399"
+    accent: "#6ee7b7"
+    background: "#ecfdf5"
+
+  dark-mode:
+    name: "暗夜黑"
+    primary: "#ffffff"
+    secondary: "#a1a1aa"
+    accent: "#fbbf24"
+    background: "#18181b"
+
+# 尺寸预设
+aspect_ratios:
+  "16:9":
+    name: "标准横版"
+    width: 1920
+    height: 1080
+    use_cases: ["博客头图", "视频封面"]
+
+  "1:1":
+    name: "方形"
+    width: 1080
+    height: 1080
+    use_cases: ["社交头像", "图标"]
+
+  "3:4":
+    name: "竖版"
+    width: 1080
+    height: 1440
+    use_cases: ["小红书", "Pinterest"]
+
+  "2.35:1":
+    name: "超宽"
+    width: 900
+    height: 383
+    use_cases: ["公众号封面", "知乎专栏"]
+
+  "21:9":
+    name: "电影比例"
+    width: 2560
+    height: 1080
+    use_cases: ["网站 Hero", "全屏背景"]
+
+# 日志设置
+logging:
+  enabled: true
+  level: "info"  # debug, info, warn, error
+  file: "./logs/image-generator.log"
