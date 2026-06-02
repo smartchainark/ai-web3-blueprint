@@ -21,15 +21,15 @@ After developing multiple AI x Web3 projects, we've come to realize that **Agent
 
 This white paper documents the SOPs, techniques, and insights we've gathered from hands-on practice, focusing on the **intersection of AI Agents and Web3**.
 
-> If you find this helpful, feel free to Star or share with your friends
+> If you find this helpful, feel free to star the repo or share it with your friends
 
 ---
 
 ## Quick Start
 
 1. **Browse docs** - Check the [Document Index](#document-index) below
-2. **Clone repo** - `git clone https://github.com/smartchainark/ai-web3-blueprint.git`
-3. **Contribute** - PRs and Issues welcome
+2. **Clone the repo** - `git clone https://github.com/smartchainark/ai-web3-blueprint.git`
+3. **Contribute** - PRs and issues are welcome
 
 ---
 
